@@ -52,7 +52,7 @@ namespace StoreSystem.Web.Controllers
 
         // GET: Users
         [HttpGet]
-        [Authorize(Roles = ROLES.Admin)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Index()
         {
             var usersList = await this.manageService.GetAllUsersAsync();
@@ -77,7 +77,7 @@ namespace StoreSystem.Web.Controllers
 
         // Post: Users
         [HttpPost]
-        [Authorize(Roles = ROLES.Admin)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Index(string searchString)
         {
             var usersList = await this.manageService.GetAllUsersByFilterAsync(0, int.MaxValue, searchString);

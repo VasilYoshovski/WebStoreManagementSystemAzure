@@ -28,7 +28,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Purchases
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaffOrClientOrSupplier)]
         public async Task<IActionResult> Index()
         {
             this.ViewData["Title"] = "List of purchases";
@@ -37,7 +37,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Purchases/Details/5
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaffOrClientOrSupplier)]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -55,7 +55,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Purchases/Create
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Create()
         {
             ViewData["SupplierID"] = new SelectList(await this.supplierService.GetAllSuppliersAsync(), "SupplierID", "Name");
@@ -68,7 +68,7 @@ namespace StoreSystem.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Create([Bind("PurchaseID,PurchaseDate,DeadlineDate,DeliveryDate,SupplierID,WarehouseID")] Purchase purchase)
         {
             if (ModelState.IsValid)
@@ -89,7 +89,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Purchases/Edit/5
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -112,7 +112,7 @@ namespace StoreSystem.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Edit(int id, [Bind("PurchaseID,PurchaseDate,DeadlineDate,DeliveryDate,SupplierID,WarehouseID")] Purchase purchase)
         {
             if (id != purchase.PurchaseID)

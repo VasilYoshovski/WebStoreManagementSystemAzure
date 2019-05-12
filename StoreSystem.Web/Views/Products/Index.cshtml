@@ -4,10 +4,10 @@
     <h1>@ViewData["Title"]</h1>
 </div>
 
-<div class="box">
+
 
     <form asp-controller="Products" asp-action="Index">
-        <div class="ui-widget" id="divlist">
+        <div class="ui-widget" id="divlist" style="font-size:14px;">
             Product name: <input type="text" class="form-control anim" name="searchString" value="@ViewData["currentFilter"]" placeholder="Search...">
         </div>
 
@@ -17,99 +17,99 @@
                 <a asp-action="Index"><input type="button" class="btn btn-outline-info margl5" value="Reset" /></a>
             </div>
             <div class="col-3" align="right">
-                <a asp-action="Create"><button class="stakbutton stakfsize15 "><span>Create new</span></button></a>
+                <a href="/products/Create"><button type="button" class="stakbutton stakfsize15 "><span>Create new</span></button></a>
             </div>
         </div>
 
     </form>
 
 
-
-    <table class="table table-hover table-sm" id="productsTable">
-        <thead>
-            <tr>
-                <th class="center">
-                    Num
-                </th>
-                <th>
-                    @*@Html.DisplayNameFor(model => model.Products.First().Name)*@
-                    <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.DisplayNameFor(model => model.First().Name)</a>
-                </th>
-                <th class="center">
-                    @Html.DisplayNameFor(model => Model.First().Measure)
-                </th>
-                <th class="right">
-                    @*@Html.DisplayNameFor(model => model.Products.First().Quantity)*@
-                    <a asp-action="Index" asp-route-sortOrder="@ViewData["QuantitySortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.DisplayNameFor(model => model.First().Quantity)</a>
-
-                </th>
-                <th class="right">
-                    @*@Html.DisplayNameFor(model => model.Products.First().BuyPrice)*@
-                    <a asp-action="Index" asp-route-sortOrder="@ViewData["BuyPriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.DisplayNameFor(model => model.First().BuyPrice)</a>
-                </th>
-                <th class="right">
-                    @*@Html.DisplayNameFor(model => model.Products.First().RetailPrice)*@
-                    <a asp-action="Index" asp-route-sortOrder="@ViewData["RetailPriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.DisplayNameFor(model => model.First().RetailPrice)</a>
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @{int count = 0; }
-
-            @foreach (var item in Model)
-            {
-                count = count + 1;
-
+    <div class="box cardtrans">
+        <table class="table table-hover table-sm" id="productsTable">
+            <thead>
                 <tr>
-                    <td class="center">
-                        @(count + (Model.PageIndex - 1) * Model.PageSize)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td class="center">
-                        @Html.DisplayFor(modelItem => item.Measure)
-                    </td>
-                    <td class="right">
-                        @Html.DisplayFor(modelItem => item.Quantity)
-                    </td>
-                    <td class="right">
-                        @Html.DisplayFor(modelItem => item.BuyPrice)
-                    </td>
-                    <td class="right">
-                        @Html.DisplayFor(modelItem => item.RetailPrice)
-                    </td>
-                    <td align="right">
-                        <a asp-action="Details" asp-route-id="@item.ProductID"><button class="stakbutton"><span>Details</span></button></a>
-                        @if (Model.CanEdit)
-                        {
-                            <a asp-action="Edit" asp-route-id="@item.ProductID"><button class="stakbutton"><span>Edit</span></button></a>
-                            <a asp-action="Delete" asp-route-id="@item.ProductID"><button class="stakbutton"><span>Delete</span></button></a>
-                        }
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    @{
-        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-    }
+                    <th class="center">
+                        <a class="nav-link text-light">Num</a>
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Products.First().Name)*@
+                        <a class="nav-link text-light" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.DisplayNameFor(model => model.First().Name)</a>
+                    </th>
+                    <th class="center">
+                        <a class="nav-link text-light">@Html.DisplayNameFor(model => Model.First().Measure)</a>
+                    </th>
+                    <th class="right">
+                        @*@Html.DisplayNameFor(model => model.Products.First().Quantity)*@
+                        <a class="nav-link text-light" asp-action="Index" asp-route-sortOrder="@ViewData["QuantitySortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.DisplayNameFor(model => model.First().Quantity)</a>
 
-    <a asp-action="Index"
-       asp-route-sortOrder="@ViewData["CurrentSort"]"
-       asp-route-pageNumber="@(Model.PageIndex - 1)"
-       asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       class="btn btn-default @prevDisabled">
-        Previous
-    </a>
-    <a asp-action="Index"
-       asp-route-sortOrder="@ViewData["CurrentSort"]"
-       asp-route-pageNumber="@(Model.PageIndex + 1)"
-       asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       class="btn btn-default @nextDisabled">
-        Next
-    </a>
-</div>
+                    </th>
+                    <th class="right">
+                        @*@Html.DisplayNameFor(model => model.Products.First().BuyPrice)*@
+                        <a class="nav-link text-light" asp-action="Index" asp-route-sortOrder="@ViewData["BuyPriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.DisplayNameFor(model => model.First().BuyPrice)</a>
+                    </th>
+                    <th class="right">
+                        @*@Html.DisplayNameFor(model => model.Products.First().RetailPrice)*@
+                        <a class="nav-link text-light" asp-action="Index" asp-route-sortOrder="@ViewData["RetailPriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.DisplayNameFor(model => model.First().RetailPrice)</a>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{int count = 0; }
+
+                @foreach (var item in Model)
+                {
+                    count = count + 1;
+
+                    <tr>
+                        <td class="center">
+                            @(count + (Model.PageIndex - 1) * Model.PageSize)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="center">
+                            @Html.DisplayFor(modelItem => item.Measure)
+                        </td>
+                        <td class="right">
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td class="right">
+                            @Html.DisplayFor(modelItem => item.BuyPrice)
+                        </td>
+                        <td class="right">
+                            @Html.DisplayFor(modelItem => item.RetailPrice)
+                        </td>
+                        <td align="right">
+                            <a asp-action="Details" asp-route-id="@item.ProductID"><button class="btn btn-outline-info btn-sm"><span>Details</span></button></a>
+                            @if (Model.CanEdit)
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.ProductID"><button class="btn btn-outline-info btn-sm"><span>Edit</span></button></a>
+                                <a asp-action="Delete" asp-route-id="@item.ProductID"><button class="btn btn-outline-danger btn-sm"><span>Delete</span></button></a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
+    </div>
 

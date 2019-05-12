@@ -12,7 +12,10 @@ namespace StoreSystem.Data
         public const string SiteObserver = "SiteObserver_R";
         public const string Supplier = "Supplier_R";
         public const string Visitor = "Visitor_R";
-        public const string AdminAndOfficeStaff = "Admin_R, OfficeStaff_R";
+        public const string AdminOrOfficeStaff = Admin + ", " + OfficeStaff;
+        public const string AdminOrOfficeStaffOrClient = Admin + ", " + OfficeStaff + ", " + Client;
+        public const string AdminOrOfficeStaffOrSupplier = Admin + ", " + OfficeStaff + ", " + Supplier;
+        public const string AdminOrOfficeStaffOrClientOrSupplier = Admin + ", " + OfficeStaff + ", " + Client + ", " + Supplier;
 
         public static string[] Roles()
         {

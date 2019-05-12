@@ -20,7 +20,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Populate Cities From JSON
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> PopulateCitiesFromJSON()
         {
             //var ddd = this.Configuration.GetSection("PathsForInitialDatabaseData").GetValue<bool>("IsEnabled");
@@ -32,7 +32,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Cities
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Index(string searchString)
         {
             this.ViewData["Title"] = "List of cities";
@@ -44,7 +44,7 @@ namespace StoreSystem.Web.Controllers
 
         // GET: Cities/Details/5
         [HttpGet]
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -63,7 +63,7 @@ namespace StoreSystem.Web.Controllers
 
         // GET: Cities/Create
         [HttpGet]
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public IActionResult Create()
         {
             return View();
@@ -73,7 +73,7 @@ namespace StoreSystem.Web.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CityID,Name")] City city)
         {
@@ -87,7 +87,7 @@ namespace StoreSystem.Web.Controllers
 
         // GET: Cities/Edit/5
         [HttpGet]
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -107,7 +107,7 @@ namespace StoreSystem.Web.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CityID,Name")] City city)
         {

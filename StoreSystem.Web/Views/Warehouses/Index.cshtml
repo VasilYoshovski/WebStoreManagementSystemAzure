@@ -6,7 +6,7 @@
 
 <h1>Our warehouses</h1>
 
-@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff))
+@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff) || User.IsInRole(ROLES.Supplier) || User.IsInRole(ROLES.Client))
 {
     <p>
         <a asp-action="Create">Create New</a>

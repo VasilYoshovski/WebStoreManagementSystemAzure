@@ -8,7 +8,7 @@ namespace StoreSystem.Web.Controllers
     public class StoreConfigurationsController : Controller
     {
         // GET: StoreServices
-        [Authorize(Roles = ROLES.Admin)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public ActionResult Index()
         {
             return View();

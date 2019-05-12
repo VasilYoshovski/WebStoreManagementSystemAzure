@@ -5,9 +5,9 @@
 }
 
 <h1>Cities list</h1>
-
-@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff))
-{
+<div class="box cardtrans">
+    @if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff))
+    {
     <p>
         <a asp-action="Create">Create New</a>
     </p>
@@ -20,15 +20,15 @@
         </p>
     </form>
 
-    <form asp-controller="Cities" asp-action="Index">
-        <p>
-            City name: <input type="text" class="form-control" name="searchString">
-            <div>
-                <input type="submit" class="btn btn-outline-info" value="Search" />
-                <a asp-action="Index"><input type="button" class="btn btn-outline-info" value="Reset" /></a>
-            </div>
-        </p>
-    </form>
+<form asp-controller="Cities" asp-action="Index">
+    <p>
+        City name: <input type="text" class="form-control" name="searchString">
+        <div>
+            <input type="submit" class="btn btn-outline-info" value="Search" />
+            <a asp-action="Index"><input type="button" class="btn btn-outline-info" value="Reset" /></a>
+        </div>
+    </p>
+</form>
 
     <table class="table">
         <thead>
@@ -58,4 +58,4 @@
 }
 <div>
     <a asp-area="Admin" asp-controller="StoreConfigurations" asp-action="Index">Back to StoreConfigurations</a>
-</div>
+</div>    </div>

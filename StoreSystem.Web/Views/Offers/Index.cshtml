@@ -5,14 +5,16 @@
 }
 
 <h1>Store System offers list</h1>
-<div class="box">
     @if (Model.CanEdit)
     {
-        <p align="right">
-            <a asp-action="Create"><button class="stakbutton stakfsize15"><span>Create new</span></button></a>
-        </p>
+        <div class="row">
+            <div class="col-12 right">
+                <a asp-action="Create"><button class="stakbutton stakfsize15 right"><span>Create New</span></button></a>
+            </div>
+        </div>
     }
 
+<div class="box cardtrans">
     <table class="table table-hover table-sm">
         <thead>
             <tr>

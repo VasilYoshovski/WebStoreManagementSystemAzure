@@ -28,7 +28,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Warehouses
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaffOrClientOrSupplier)]
         public async Task<IActionResult> Index(string searchString)
         {
             this.ViewData["Title"] = "List of warehouses";
@@ -39,7 +39,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Warehouses/Details/5
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaffOrClientOrSupplier)]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -57,7 +57,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Warehouses/Create
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Create()
         {
             ViewData["AddressID"] = new SelectList(await this.addressService.GetAllAddressesAsync(), "AddressID", "Name");
@@ -71,7 +71,7 @@ namespace StoreSystem.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Create([Bind("WarehouseID,Name,AddressID,CityID,CountryID")] Warehouse warehouse)
         {
             if (ModelState.IsValid)
@@ -90,7 +90,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Warehouses/Edit/5
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -114,7 +114,7 @@ namespace StoreSystem.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Edit(int id, [Bind("WarehouseID,Name,AddressID,CityID,CountryID")] Warehouse warehouse)
         {
             if (id != warehouse.WarehouseID)

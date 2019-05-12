@@ -1,12 +1,51 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+/*bootstrap customizations*/
+.btn-outline-info {
+    border-color: white;
+    color: white;
+    margin: 0px;
+    background-color: rgba(57, 99, 158,0.5);
+}
+
+    .btn-outline-info:hover {
+        background-color: rgba(58, 110, 181,0.3);
+    }
+
+.btn-outline-danger {
+    border-color: #39639e;
+    margin: 0px;
+    color: red;
+    background-color: white;
+}
+
+    .btn-outline-danger:hover {
+        border-color: darkred;
+        background-color: #ffa3a3;
+    }
+.card {
+    margin:4px;
+    width:180px;
+    height:300px;
+}
+/*--------*/
+.form-control {
+    min-height: 0em
+}
+
+div.cardtrans {
+    background-color: rgba(255, 255, 255,0.7);
+    border: 1px solid rgb(128, 128, 128);
+    text-align: left;
+}
+
 input.anim {
     width: 165px;
     box-sizing: border-box;
     border: 2px solid #39639e;
     border-radius: 6px;
-    font-size: 10px;
+    font-size: 14px;
     background-color: white;
     background-image: url('/images/searchicon.png');
     background-position: 10px 10px;
@@ -20,6 +59,18 @@ input.anim {
     margin-right:5px;
     margin-top:5px;
     margin-bottom:8px;
+    margin-left:0
+}
+
+.margl0 {
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
+.rem1{
+    font-size:1rem;
 }
 
 .box {
@@ -73,8 +124,7 @@ div.inline {
 
 /* Stakata button
 -------------------------------------------------- */
-
-.stakbutton {
+    .stakbutton {
     display: inline-block;
     border-radius: 6px;
     background-color: white;
@@ -180,26 +230,7 @@ div.inline {
             right: 0;
         }
 /*-------------------*/
-.btn-outline-info {
-    border-color: #39639e;
-    color: #39639e;
-    background-color: white;
-}
 
-.btn-outline-info:hover {
-    background-color: #39639e;
-}
-
-.btn-outline-danger {
-    border-color: #39639e;
-    color: red;
-    background-color: white;
-}
-
-    .btn-outline-danger:hover {
-        border-color: darkred;
-        background-color: #ffa3a3;
-    }
 
 .colorb {
     color: #39639e;
@@ -242,7 +273,7 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    margin-bottom: 80px;
 }
 
 .footer {

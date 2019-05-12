@@ -42,7 +42,7 @@ namespace StoreSystem.Web.Controllers
 
         // GET: Suppliers
         [HttpGet]
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Index()
         {
             var usersList = await this.supplierService.GetAllSuppliersAsync();
@@ -51,7 +51,7 @@ namespace StoreSystem.Web.Controllers
 
         // Post: Suppliers
         [HttpPost]
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Index(string searchString)
         {
             var usersList = await this.supplierService.GetAllSuppliersByFilterAsync(0, int.MaxValue, searchString);
@@ -59,7 +59,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Suppliers/Details/5
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -77,7 +77,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Suppliers/Create
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Create()
         {
             var visitorUsersSelectList = (await databaseService.GetUsersNameAndIDByRoleAsync(ROLES.Visitor))
@@ -98,7 +98,7 @@ namespace StoreSystem.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Create(SupplierViewModel model)
         {
             if (!this.ModelState.IsValid)
@@ -131,7 +131,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Suppliers/Edit/5
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -154,7 +154,7 @@ namespace StoreSystem.Web.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = ROLES.AdminAndOfficeStaff)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaff)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("SupplierID,Name,UIN,AddressID,CityID,CountryID,StoreUserId")] Supplier supplier)
         {
