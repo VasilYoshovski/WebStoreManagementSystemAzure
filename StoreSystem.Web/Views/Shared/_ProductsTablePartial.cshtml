@@ -1,0 +1,90 @@
+﻿@model (IReadOnlyList<StoreSystem.Web.Models.ProductViewModels.ProductLineInfoViewModel>, bool, decimal)
+
+<div class="row">
+    <div class="col-12 box">
+
+        @if (Model.Item2)
+        {
+            <p>
+                <button class="stakbutton stakfsize15" id="addrowButton" onclick="showSearch();"><span>Add products...</span></button>
+
+                <div class="ui-widget" style="display:none" id="divlist">
+                    <input type="text" class="form-control anim" name="search" placeholder="Search.." ID="productList" />
+                </div>
+
+            </p>
+        }
+
+        <table class="table table-hover table-sm" id="productsTable">
+            <thead>
+                <tr>
+                    <th class="center">
+                        @Html.DisplayNameFor(model => model.Item1.First().ProductID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.First().Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.First().Measure)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.First().Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.First().Price)
+                    </th>
+                    <th>
+                        Price w. disc.
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.First().Total)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Item1)
+                {
+                <tr>
+                    <td class="center" name="dbidname">
+                        @Html.DisplayFor(modelItem => item.ProductID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Measure)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @((item.Price * (1 - Model.Item3 / 100)).ToString(format:"f2"))
+                    </td>
+                    <td name="totalname">
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+                    <td align="right">
+                        <a href="@Url.Action("Details","Products", new {id=item.ProductID })"><button class="btn btn-outline-info"><span>Details</span></button></a>
+                        <a><button class="btn btn-outline-danger" onclick="deleteDbRow(this)"><span>Delete</span></button></a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+        <h5 class="right">Total price without VAT: <span id="totalnovat"></span></h5>
+        <h5 class="right">VAT 20%: <span id="vattotal"></span></h5>
+        <h5 class="right">Total price with VAT: <span id="totalwithvat"></span></h5>
+
+
+        @if (Model.Item2)
+        {
+            <input type="button" class="btn btn-outline-info" id="saveproducts" value="Save products" onclick="pushToDB();" />
+            <input type="button" class="btn btn-outline-info" id="cancel" value="Cancel" onclick="window.location.reload();" />
+        }
+    </div>
+</div>

@@ -1,0 +1,186 @@
+﻿@model StoreSystem.Web.Models.SaleViewModels.InvoiceViewModel
+
+@{
+    Layout = "_PrintLayout";
+}
+
+@{
+    ViewData["Title"] = "Invoice";
+}
+<div class="forpdfsave">
+    <br />
+    <br />
+    <h1 class="center">INVOICE</h1>
+    <hr />
+    <h5 class="center">@Model.SaleInfo.OrderDate.Date.ToLongDateString()</h5>
+    <h5 class="center">Number: 0000000235</h5>
+    <div>
+
+
+        <hr>
+        <div class="row margl5">
+
+            <div class="col-6"><img src="~/images/InvoiceLogo.png" alt="Logo" /></div>
+            <div class="col-6" style="padding:10px">
+                <div>
+                    Store Management Center Ltd.
+                </div>
+                <div>UIN 2000125045</div>
+                <div>Sofia, Al. Malinov blv. 34</div>
+                <div>Bank account: BG36 CREX 9260 3114 5494 01</div>
+                <div>IBAN: CREXBGSF</div>
+
+
+            </div>
+        </div>
+
+        <dl class="row">
+            <dt class="col-sm-6" style="background-color:lightgray">
+                BILL TO
+            </dt>
+            <dt class="col-sm-6" style="background-color:lightgray">
+                SHIPS TO
+            </dt>
+
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ClientInfo.Name)
+            </dt>
+            <dd class="col-sm-4">
+                @Html.DisplayFor(model => model.ClientInfo.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SaleInfo.OrderDate.Date)
+            </dt>
+            <dd class="col-sm-4">
+                @if (Model.SaleInfo.OrderDate != null)
+                {
+                    @Model.SaleInfo.OrderDate.ToShortDateString();
+                }
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ClientInfo.UIN)
+            </dt>
+            <dd class="col-sm-4">
+                @Html.DisplayFor(model => model.ClientInfo.UIN)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SaleInfo.DeadlineDate)
+            </dt>
+            <dd class="col-sm-4">
+                @if (Model.SaleInfo.DeadlineDate != null)
+                {
+                    @Model.SaleInfo.DeadlineDate.ToShortDateString();
+                }
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ClientInfo.AddressName)
+            </dt>
+            <dd class="col-sm-4">
+                @Html.DisplayFor(model => model.ClientInfo.AddressName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SaleInfo.AddressName)
+            </dt>
+            <dd class="col-sm-4">
+                @Html.DisplayFor(model => model.SaleInfo.AddressName)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ClientInfo.CityName)
+            </dt>
+            <dd class="col-sm-4">
+                @Html.DisplayFor(model => model.ClientInfo.CityName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SaleInfo.CityName)
+            </dt>
+            <dd class="col-sm-4">
+                @Html.DisplayFor(model => model.SaleInfo.CityName)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ClientInfo.CountryName)
+            </dt>
+            <dd class="col-sm-4">
+                @Html.DisplayFor(model => model.ClientInfo.CountryName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SaleInfo.CountryName)
+            </dt>
+            <dd class="col-sm-4">
+                @Html.DisplayFor(model => model.SaleInfo.CountryName)
+            </dd>
+        </dl>
+        @{ var discount = (1 - Model.SaleInfo.ProductDiscount / 100);}
+        <table class="table table-bordered table-sm" id="productsTable">
+            <thead style="background-color:lightgray">
+                <tr>
+                    <th class="center">
+                        @Html.DisplayNameFor(model => model.ProductsInSale.First().ProductID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductsInSale.First().Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductsInSale.First().Measure)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductsInSale.First().Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductsInSale.First().Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductsInSale.First().Total)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @{decimal allTotal = 0; }
+                @{int count = 0; }
+
+                @foreach (var item in Model.ProductsInSale)
+                {
+                    count = count + 1;
+
+                    <tr>
+                        <td class="center">
+                            @(count)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Measure)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @((item.Price * discount).ToString(format: "f2"))
+                        </td>
+                        <td name="total">
+                            @((item.Total * discount).ToString(format: "f2"))
+                            @{allTotal = allTotal + item.Total * discount;}
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h5 class="right">Total price without VAT: @allTotal.ToString(format: "f2")</h5>
+        <h5 class="right">VAT 20%: @((allTotal * 0.2m).ToString(format: "f2"))</h5>
+        <h5 class="right">Total price with VAT: @((allTotal * 1.2m).ToString(format: "f2"))</h5>
+
+
+    </div>
+</div>
+
+
+@section Scripts {
+   
+
+    }

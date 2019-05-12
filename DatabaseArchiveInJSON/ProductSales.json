@@ -1,0 +1,132 @@
+[
+  {
+    "ProductID": 2,
+    "SaleID": 2,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 3,
+    "SaleID": 26,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 4,
+    "SaleID": 8,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 11,
+    "SaleID": 7,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 15,
+    "SaleID": 22,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 25,
+    "SaleID": 16,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 27,
+    "SaleID": 19,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 29,
+    "SaleID": 20,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 35,
+    "SaleID": 9,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 35,
+    "SaleID": 24,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 36,
+    "SaleID": 10,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 39,
+    "SaleID": 14,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 41,
+    "SaleID": 13,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 47,
+    "SaleID": 25,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 50,
+    "SaleID": 21,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 52,
+    "SaleID": 3,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 62,
+    "SaleID": 18,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 66,
+    "SaleID": 4,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 72,
+    "SaleID": 1,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 72,
+    "SaleID": 6,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 73,
+    "SaleID": 17,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 74,
+    "SaleID": 23,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 81,
+    "SaleID": 5,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 94,
+    "SaleID": 11,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 95,
+    "SaleID": 12,
+    "Quantity": 2.00
+  },
+  {
+    "ProductID": 99,
+    "SaleID": 15,
+    "Quantity": 2.00
+  }
+]

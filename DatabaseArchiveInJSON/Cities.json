@@ -1,0 +1,42 @@
+[
+  {
+    "CityID": 1,
+    "Name": "City10"
+  },
+  {
+    "CityID": 2,
+    "Name": "City9"
+  },
+  {
+    "CityID": 3,
+    "Name": "City8"
+  },
+  {
+    "CityID": 4,
+    "Name": "City7"
+  },
+  {
+    "CityID": 5,
+    "Name": "City6"
+  },
+  {
+    "CityID": 6,
+    "Name": "City5"
+  },
+  {
+    "CityID": 7,
+    "Name": "City4"
+  },
+  {
+    "CityID": 8,
+    "Name": "City3"
+  },
+  {
+    "CityID": 9,
+    "Name": "City2"
+  },
+  {
+    "CityID": 10,
+    "Name": "City1"
+  }
+]

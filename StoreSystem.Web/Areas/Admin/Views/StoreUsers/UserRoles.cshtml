@@ -1,0 +1,44 @@
+﻿@model List<IdentityRole>
+
+@{
+    ViewData["Title"] = "User Roles";
+}
+
+<h1>User roles list</h1>
+
+@if (User.IsInRole(ROLES.Admin))
+{
+    <form asp-controller="StoreUser" asp-action="UserRoles">
+        <p>
+            User role: <input type="text" class="form-control" name="searchString">
+            <div>
+                <input type="submit" class="btn btn-outline-info" value="Search" />
+                <a asp-action="UserRoles"><input type="button" class="btn btn-outline-info" value="Reset" /></a>
+            </div>
+        </p>
+    </form>
+
+    <table class="table">
+        <thead>
+            @*<tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th></th>
+                </tr>*@
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<div>
+    <a asp-area="Admin" asp-controller="StoreConfigurations" asp-action="Index">Back to StoreConfigurations</a>
+</div>

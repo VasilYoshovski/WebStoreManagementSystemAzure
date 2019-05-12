@@ -1,0 +1,89 @@
+﻿@model StoreUserViewModel
+
+@{
+    ViewData["Title"] = "Configure";
+}
+
+<h1>Configure user</h1>
+
+@if (User.IsInRole(ROLES.Admin))
+{
+    <div>
+        <hr />
+        <dl class="row">
+            <dd class="col-sm-2">
+                @Html.DisplayNameFor(model => Model.UserName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayFor(model => Model.UserName)
+            </dt>
+        </dl>
+        <dl class="row">
+            <dd class="col-sm-2">
+                @Html.DisplayNameFor(model => Model.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayFor(model => Model.Email)
+            </dt>
+        </dl>
+        <dl class="row">
+            <dd class="col-sm-2">
+                @Html.DisplayNameFor(model => Model.Role)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayFor(model => Model.Role)
+            </dt>
+        </dl>
+        <dl class="row">
+            <dd class="col-sm-2">
+                @Html.DisplayNameFor(model => Model.UserID)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayFor(model => Model.UserID)
+            </dt>
+        </dl>
+        <dl class="row">
+            <dd class="col-sm-2">
+                @Html.DisplayNameFor(model => Model.Phone)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayFor(model => Model.Phone)
+            </dt>
+        </dl>
+    </div>
+    @if (Model.IsProtected == false)
+    {
+        <div class="card inline" style="width:180px">
+            <a class="block btn btn-outline-info" asp-area="Admin" asp-controller="StoreUsers" asp-action="ChangeUserRoleToVisitor" asp-route-id="@Model.UserName" title="Users list">Set to Visitor</a>
+        </div>
+        <div class="card inline" style="width:180px">
+            <a class="block btn btn-outline-info" asp-area="Admin" asp-controller="StoreUsers" asp-action="ChangeUserRoleToOfficeStaff" asp-route-id="@Model.UserName" title="Users list">Set to OfficeStaff</a>
+        </div>
+        <div class="card inline" style="width:180px">
+            <a class="block btn btn-outline-info" asp-area="Admin" asp-controller="StoreUsers" asp-action="ChangeUserRoleToAdmin" asp-route-id="@Model.UserName" title="Users list">Set to Admin</a>
+        </div>
+
+        @*<form asp-area="Admin" asp-controller="StoreUsers" asp-action="SetDefaultPassword">
+            <p>
+                New password: <input type="text" class="form-control" value="Default@1" name="newPasswodString">
+                    <div>
+                        <input type="submit" class="btn btn-outline-info" value="Set default password" />
+                    </div>
+                    <div>
+                        <input type="button" class="btn btn-outline-info"  asp-area="Admin" asp-controller="StoreUsers" asp-action="ChangeUserRoleToVisitor" asp-route-id="@Model.UserName" value="Set default password" />
+                    </div>
+            </p>
+            </form>*@
+    }
+    else
+    {
+        <h1></h1>
+        <h1>
+            <font color="red">This user could not be configured!</font>
+        </h1>
+    }
+}
+        <div>
+            <h1></h1>
+            <a asp-action="Index">Back to List</a>
+        </div>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<StoreSystem.Data.Models.Purchase>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Purchases list</h1>
+
+@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PurchaseDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeadlineDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeliveryDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Supplier)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PurchaseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeadlineDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeliveryDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Supplier.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Warehouse.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.PurchaseID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.PurchaseID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.PurchaseID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<div>
+    <h1></h1>
+    <a asp-controller="Home" asp-action="Index">Go to Home</a>
+</div>

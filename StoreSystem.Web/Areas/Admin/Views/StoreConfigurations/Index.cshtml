@@ -1,0 +1,57 @@
+﻿@*@model StoreSystem.Web.Models.ManageViewModels.IndexViewModel
+        @using StoreSystem.Data
+    @{
+        ViewData["Title"] = "Store configurations";
+    }
+
+    <h4>@ViewData["Title"]</h4>*@
+
+<h4>Store configurations</h4>
+
+@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff))
+{
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="card inline" style="width:180px">
+                    <a class="block btn btn-outline-info" asp-area="" asp-controller="Countries" asp-action="Index" title="Countries">Manage countries</a>
+                </div>
+                <div class="card inline" style="width:180px">
+                    <a class="block btn btn-outline-info" asp-area="" asp-controller="Cities" asp-action="Index" title="Cities">Manage cities</a>
+                </div>
+                <div class="card inline" style="width:180px">
+                    <a class="block btn btn-outline-info" asp-area="" asp-controller="Addresses" asp-action="Index" title="Addresses">Manage addresses</a>
+                </div>
+            </form>
+        </div>
+        @if (User.IsInRole(ROLES.Admin))
+        {
+            <div class="col-md-6">
+                <form method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="card inline" style="width:180px">
+                        <a class="block btn btn-outline-info" asp-area="" asp-controller="Clients" asp-action="Index" title="Users list">Manage clients</a>
+                    </div>
+                    <div class="card inline" style="width:180px">
+                        <a class="block btn btn-outline-info" asp-area="" asp-controller="Suppliers" asp-action="Index" title="Users list">Manage suppliers</a>
+                    </div>
+                    <div class="card inline" style="width:180px">
+                        <a class="block btn btn-outline-info" asp-area="Admin" asp-controller="StoreUsers" asp-action="Index" title="Users list">Manage by other roles</a>
+                    </div>
+                    <div class="card inline" style="width:180px">
+                        <a class="block btn btn-outline-info" asp-area="Admin" asp-controller="StoreUsers" asp-action="UserRoles" title="User roles">View user roles</a>
+                    </div>
+                </form>
+            </div>
+        }
+    </div>
+}
+<div>
+    <h1></h1>
+    <a asp-controller="Home" asp-action="Index">Go to Home</a>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

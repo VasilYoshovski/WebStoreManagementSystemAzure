@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WIMSystem.Program" Collapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WIMSystem.Commands.AddCommands.AddPersonToTeamCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Commands\AddCommands\AddPersonToTeamCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ChangeCommands.AssignWorkItemToMemberCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Commands\ChangeCommands\AssignWorkItemToMemberCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ChangeCommands.ChangePriorityCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Commands\ChangeCommands\ChangePriorityCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ChangeCommands.ChangeRatingOfFeedbackCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Commands\ChangeCommands\ChangeRatingOfFeedbackCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ChangeCommands.ChangeSeverityOfBugCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Commands\ChangeCommands\ChangeSeverityOfBugCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ChangeCommands.ChangeSizeOfStoryCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Commands\ChangeCommands\ChangeSizeOfStoryCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ChangeCommands.ChangeStatus" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Commands\ChangeCommands\ChangeStatus.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ChangeCommands.UnassignWorkItemCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Commands\ChangeCommands\UnassignWorkItemCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.CreateCommands.CreateBoardCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAoA=</HashCode>
+      <FileName>Commands\CreateCommands\CreateBoardCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.CreateCommands.CreateBugCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAoA=</HashCode>
+      <FileName>Commands\CreateCommands\CreateBugCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.CreateCommands.CreateCommentCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAoA=</HashCode>
+      <FileName>Commands\CreateCommands\CreateCommentCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.CreateCommands.CreateFeedbackCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAoA=</HashCode>
+      <FileName>Commands\CreateCommands\CreateFeedbackCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.CreateCommands.CreatePersonCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAEAAAAAAAAAAAAAAAAAAAAoA=</HashCode>
+      <FileName>Commands\CreateCommands\CreatePersonCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.CreateCommands.CreateStoryCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAoA=</HashCode>
+      <FileName>Commands\CreateCommands\CreateStoryCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.CreateCommands.CreateTeamCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAAAAAAoA=</HashCode>
+      <FileName>Commands\CreateCommands\CreateTeamCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ListCommands.ListBoardWorkItemsCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\ListCommands\ListBoardWorkItemsCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ListCommands.ShowAllPeopleCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\ListCommands\ShowAllPeopleCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ListCommands.ShowAllTeamBoardsCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAARAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\ListCommands\ShowAllTeamBoardsCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ListCommands.ShowAllTeamMembersCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAARAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\ListCommands\ShowAllTeamMembersCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ListCommands.ShowAllTeamsCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Commands\ListCommands\ShowAllTeamsCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ListCommands.ShowBoardActivityCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAARAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\ListCommands\ShowBoardActivityCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ListCommands.ShowPersonActivityCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAQAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\ListCommands\ShowPersonActivityCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.ListCommands.ShowTeamActivityCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAARAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\ListCommands\ShowTeamActivityCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.Utils.CommandsConsts" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YJcAABBAAAIAICAIADAABAAEQVAAACAAAgAAABQQEIM=</HashCode>
+      <FileName>Commands\Utils\CommandsConsts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WIMSystem.Commands.Utils.Getters" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAgAAAIAAAAAAQEAAAAAAAIAAAACAAAAAgAAA=</HashCode>
+      <FileName>Commands\Utils\Getters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.Utils.HistoryEventWriter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAgAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Utils\HistoryEventWriter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Commands.Utils.PrintReports" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAACAEAAA=</HashCode>
+      <FileName>Commands\Utils\PrintReports.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.ContainerModules.CommandsModule" Collapsed="true">
+    <Position X="18" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ContainerModules\CommandsModule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WIMSystem.ContainerModules.MainModule" Collapsed="true">
+    <Position X="18" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ContainerModules\MainModule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WIMSystem.Core.Command" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAIAAAACAAAA=</HashCode>
+      <FileName>Core\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Core.CommandParser" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\CommandParser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Core.Engine" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAACAAAAAAAAAAAAAAAAAEEAAAAAAAAAAQJAI=</HashCode>
+      <FileName>Core\Engine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WIMSystem.Core.Factories.CommandsFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAA=</HashCode>
+      <FileName>Core\Factories\CommandsFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Core.Factories.ComponentsFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACgEAAAAAAAAAAEAAAAAAAAAAAAAhAAEACAQAA=</HashCode>
+      <FileName>Core\Factories\ComponentsFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Core.Factories.ContainerResolver&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Core\Factories\ContainerResolver.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Core.Utils.CommandsContainerResolver" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Utils\CommandsContainerResolver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WIMSystem.Core.Utils.ConsoleReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Utils\ConsoleReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Core.Utils.ConsoleWriter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Core\Utils\ConsoleWriter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Core.Utils.MenuReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Utils\MenuReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Core.Utils.StringToEnum&lt;T&gt;" Collapsed="true">
+    <Position X="14.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Utils\StringToEnum.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WIMSystem.Models.HistoryItemsCollection" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAABImAAAIAAAAAAAAAAAEAAAAAAAQAAA=</HashCode>
+      <FileName>MemoryDB\HistoryItemsCollection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Models.PersonsCollection" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAECAAAAgAAAAAIAAAAAAAAAAEQAEA=</HashCode>
+      <FileName>MemoryDB\PersonsCollection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Models.WIMTeams" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAADAECAAiAAEAAAAAAAAEAAAAAAAQAAA=</HashCode>
+      <FileName>MemoryDB\WIMTeams.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Models.Board" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEIAgAACgAAAAYAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Board.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Models.Bug" Collapsed="true">
+    <Position X="2.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAEBAAAAAAEIAQAACAAAAAAAAQAAAA=</HashCode>
+      <FileName>Models\Bug.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WIMSystem.Models.Comment" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAIAAAAAAAAAAAAAAIAAAACA=</HashCode>
+      <FileName>Models\Comment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Models.Feedback" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAAAAAAAEAAAAAAAEAAQAAAEAAAAAAAAAEAA=</HashCode>
+      <FileName>Models\Feedback.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WIMSystem.Models.HistoryItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAAAAkAAAEJAAQAAAAAAAYAAAAOAAAACAAAAA=</HashCode>
+      <FileName>Models\HistoryItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Models.Person" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAIAIAAAACAAAAAAAAIAAAAAAI=</HashCode>
+      <FileName>Models\Person.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Models.Story" Collapsed="true">
+    <Position X="5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAgAAEAAAAAAAECAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Story.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WIMSystem.Models.Team" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAACACABAQEAEEACABBAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\Team.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Menu.MainMenu" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAACAAAEAAAAAAAQAABAAA=</HashCode>
+      <FileName>Menu\MainMenu.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Menu.MainMenuItems" Collapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Menu\MainMenuItems.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WIMSystem.Menu.MainMenuLogo" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Menu\MainMenuLogo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WIMSystem.Menu.MenuItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAABAAAAAQAAAAAAAAAAAAAAAEAAAAACAAAAAg=</HashCode>
+      <FileName>Menu\MenuItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WIMSystem.Models.Abstract.AssignableWorkItem" Collapsed="true">
+    <Position X="3.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAAAQQAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Abstract\AssignableWorkItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WIMSystem.Models.Abstract.WorkItem" Collapsed="true">
+    <Position X="2.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BACAQAAIwAAggEAEIAAIAAAEAAQAAAAAIAAAACAAAgA=</HashCode>
+      <FileName>Models\Abstract\WorkItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WIMSystem.Models.Utils.IDProvider" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAgAAA=</HashCode>
+      <FileName>Models\Utils\IDProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WIMSystem.Utils.Consts" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAQAAIE=</HashCode>
+      <FileName>Utils\Consts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WIMSystem.Utils.Validators" Collapsed="true">
+    <Position X="19.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAgAAAAAAAAAAAAAAAAABAAABA=</HashCode>
+      <FileName>Utils\Validators.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="WIMSystem.Commands.Contracts.IEngineCommand" Collapsed="true">
+    <Position X="19.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Contracts\IEngineCommand.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Commands.Contracts.IGetters" Collapsed="true">
+    <Position X="7.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAgAAAAAAAAAAQAAAAAAAAIAAAACAAAAAgAAA=</HashCode>
+      <FileName>Commands\Contracts\IGetters.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Commands.Contracts.IHistoryEventWriter" Collapsed="true">
+    <Position X="9.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Contracts\IHistoryEventWriter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Commands.Contracts.IPrintReports" Collapsed="true">
+    <Position X="7.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Commands\Contracts\IPrintReports.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Core.Contracts.ICommand" Collapsed="true">
+    <Position X="9.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Core\Contracts\ICommand.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Core.Contracts.IReader" Collapsed="true">
+    <Position X="9.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Contracts\IReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Core.Contracts.IWriter" Collapsed="true">
+    <Position X="14.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Core\Contracts\IWriter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Core.ICommandParser" Collapsed="true">
+    <Position X="11" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Contracts\ICommandParser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Core.Factories.Contracts.ICommandsFactory" Collapsed="true">
+    <Position X="12.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Core\Factories\Contracts\ICommandsFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Core.Factories.Contracts.IComponentsFactory" Collapsed="true">
+    <Position X="16.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACgEAAAAAAAAAAEAAAAAAAAAAAAAhAAEACAQAA=</HashCode>
+      <FileName>Core\Factories\Contracts\IComponentsFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Core.Factories.IContainerResolver&lt;T&gt;" Collapsed="true">
+    <Position X="18" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Core\Factories\Contracts\IContainerResolver.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Models.Contracts.IHistoryItemsCollection" Collapsed="true">
+    <Position X="12.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABImAAAIAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>MemoryDB\Contracts\IHistoryItemsCollection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Models.Contracts.IPersonsCollection" Collapsed="true">
+    <Position X="19.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAEQAEA=</HashCode>
+      <FileName>MemoryDB\Contracts\IPersonsCollection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Models.Contracts.IAssignableWorkItem" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAAAQQAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contracts\IAssignableWorkItem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Models.Contracts.IBoard" Collapsed="true">
+    <Position X="7.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEIAgAAAAAAAAIAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contracts\IBoard.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Models.Contracts.IBug" Collapsed="true">
+    <Position X="3.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAABAAAAAAAAAAAACAAAAAAAAQAAAA=</HashCode>
+      <FileName>Models\Contracts\IBug.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Models.Contracts.IComment" Collapsed="true">
+    <Position X="14.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Contracts\IComment.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Models.Contracts.IFeedback" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAEAA=</HashCode>
+      <FileName>Models\Contracts\IFeedback.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Models.Contracts.IHistoryItem" Collapsed="true">
+    <Position X="11" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAgAAAEBAAQAAAAAAAIAAAAEAAAACAAAAA=</HashCode>
+      <FileName>Models\Contracts\IHistoryItem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Models.Contracts.IPerson" Collapsed="true">
+    <Position X="18" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAIAAAAAACAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Models\Contracts\IPerson.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Models.Contracts.IStory" Collapsed="true">
+    <Position X="3.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAgAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contracts\IStory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Models.Contracts.ITeam" Collapsed="true">
+    <Position X="11" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAACABAQEAAAACABBAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contracts\ITeam.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Models.Contracts.IWorkItem" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAIgAAggEAEAAAIAAAEAAQAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Models\Contracts\IWorkItem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Models.IWIMTeams" Collapsed="true">
+    <Position X="12.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAECAAiAAEAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>MemoryDB\Contracts\IWIMTeams.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Menu.Contracts.IMainMenu" Collapsed="true">
+    <Position X="14.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAACAAAEAAAAAAAQAABAAA=</HashCode>
+      <FileName>Menu\Contracts\IMainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WIMSystem.Menu.Contracts.IMenuItem" Collapsed="true">
+    <Position X="16.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAEAAAAACAAAAAA=</HashCode>
+      <FileName>Menu\Contracts\IMenuItem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="WIMSystem.Core.Enums.InputType" Collapsed="true">
+    <Position X="14.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Core\Enums\InputType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WIMSystem.Models.Enums.BugSeverityType" Collapsed="true">
+    <Position X="7.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAACA=</HashCode>
+      <FileName>Models\Enums\BugSeverityType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WIMSystem.Models.Enums.BugStatusType" Collapsed="true">
+    <Position X="9.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAABAAAA=</HashCode>
+      <FileName>Models\Enums\BugStatusType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WIMSystem.Models.Enums.FeedbackStatusType" Collapsed="true">
+    <Position X="11" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAACAAAAAAAAAQAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Enums\FeedbackStatusType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WIMSystem.Models.Enums.HistoryItemFilterType" Collapsed="true">
+    <Position X="12.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAQAAAAIAAAAACAAAA=</HashCode>
+      <FileName>Models\Enums\FilterType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WIMSystem.Models.Enums.PriorityType" Collapsed="true">
+    <Position X="16.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Models\Enums\PriorityType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WIMSystem.Models.Enums.StorySizeType" Collapsed="true">
+    <Position X="18" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Models\Enums\StorySizeType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WIMSystem.Models.Enums.StoryStatusType" Collapsed="true">
+    <Position X="19.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\Enums\StoryStatusType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

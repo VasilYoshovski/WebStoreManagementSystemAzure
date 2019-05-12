@@ -1,0 +1,32 @@
+﻿<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title" id="titleNewAddressName">Create address</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="newAddressName" id="labelNewAddressName">Enter new address:</label>
+                    <input type="text" id="newAddressName" class="form-control" />
+                </div>
+                <input for="newAddressName" type="button" class="btn btn-outline-info btn-sm" value="Create new address" onclick="createFunction('newAddressName');" />
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="routeToAction" value="" />
+<input type="hidden" id="selectToAddTo" value="" />
+

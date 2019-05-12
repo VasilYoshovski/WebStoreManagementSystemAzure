@@ -1,0 +1,90 @@
+﻿@model StoreSystem.Web.Models.OfferViewModels.OfferCUViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Offer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="OrderDate" class="control-label"></label>
+                <input asp-for="OrderDate" class="form-control" />
+                <span asp-validation-for="OrderDate" class="text-danger"></span>
+            </div>*@
+            <div class="form-group" id="dtp4">
+                <label asp-for="DeadlineDate" class="control-label"></label>
+                <input asp-for="DeadlineDate" class="form-control" />
+                <span asp-validation-for="DeadlineDate" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="DeliveryDate" class="control-label"></label>
+                <input asp-for="DeliveryDate" class="form-control" />
+                <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="ClientID" class="control-label"></label>
+                <select asp-for="ClientID" class="form-control" asp-items="ViewBag.Clients" id="clientNameSelect"></select>
+                <a asp-controller="Addresses" asp-action="Create">Add new address</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressID" class="control-label"></label>
+                <select asp-for="AddressID" class="form-control" asp-items="ViewBag.Addresses" id="addressNameSelect"></select>
+                <button type="button" class="btn btn-outline-info btn-sm" id="createAddressBtn">Add address</button>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityID" class="control-label"></label>
+                <select asp-for="CityID" class="form-control" asp-items="ViewBag.Cities" id="cityNameSelect"></select>
+                <button type="button" class="btn btn-outline-info btn-sm" id="createCityBtn">Add city</button>
+            </div>
+            <div class="form-group">
+                <label asp-for="CountryID" class="control-label"></label>
+                <select asp-for="CountryID" class="form-control" asp-items="ViewBag.Countries" id="countryNameSelect"></select>
+                <button type="button" class="btn btn-outline-info btn-sm" id="createCountryBtn">Add country</button>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDiscount" class="control-label"></label>
+                <input asp-for="ProductDiscount" class="form-control" />
+                <span asp-validation-for="ProductDiscount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-outline-info" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@*
+    Button id for address = createAddressBtn
+    Button id for city = createCityBtn
+    Button id for country = createCountryBtn
+
+    Select id for address = addressNameSelect
+    Select id for city = cityNameSelect
+    Select id for country = countryNameSelect
+
+    partial view add: _ModalAddressCreator
+    js script add: ModalAddressCreator.js
+*@
+
+@{await Html.RenderPartialAsync("_ModalAddressCreator");}
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/ModalAddressCreator.js"></script>
+    <script type="text/javascript">
+        $('#dtp4').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+    </script>
+}

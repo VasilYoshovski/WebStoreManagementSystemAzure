@@ -1,0 +1,97 @@
+﻿@model StoreSystem.Web.Models.SaleViewModels.SaleIndexViewModel
+
+@{
+    ViewData["Title"] = "Sales";
+}  
+
+<h1>Store System sales list</h1>
+<div class="box">
+    @if (Model.CanEdit)
+    {
+        <p align="right">
+            <a asp-action="Create"><button class="stakbutton stakfsize15"><span>Create new</span></button></a>
+        </p>
+    }
+
+    <table class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th class="center">
+                    Num
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SalesList.FirstOrDefault().SaleID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SalesList.FirstOrDefault().CreatedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SalesList.FirstOrDefault().ClientName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SalesList.FirstOrDefault().Discount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SalesList.FirstOrDefault().Total)
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int count = 0; }
+
+            @foreach (var item in Model.SalesList)
+            {
+                count = count + 1;
+
+                @if (Model.NotClosedSales.Any(x => x == item.SaleID))
+                {
+                    if (item.DeadlineDate.Date < DateTime.Now.Date)
+                    {
+                        @:<tr style="color:red">
+                        }
+                        else
+                        {
+                            @:<tr style="color:darkgreen">
+                        }
+                    }
+                    else
+                    {
+                        @:<tr>
+                    }
+
+                <td class="center">
+                    @count
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SaleID)
+                </td>
+                <td>
+                    @if (item.CreatedOn != null)
+                    {
+                        @item.CreatedOn.ToShortDateString();
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td align="right">
+                    <a asp-action="Details" asp-route-id="@item.SaleID"><button class="btn btn-outline-info btn-sm">Details</button></a>
+                    @if (Model.CanEdit)
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.SaleID"><button class="btn btn-outline-info btn-sm">Edit</button></a>
+                        <a asp-action="Delete" asp-route-id="@item.SaleID"><button class="btn btn-outline-danger btn-sm">Delete</button></a>
+                    }
+                </td>
+            @:</tr>
+        }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,121 @@
+﻿@model StoreSystem.Web.Models.OfferViewModels.OfferDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Offer</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfferInfo.OfferID)
+        </dt>
+        <dd class="col-sm-4" id="idfield">
+            @Html.DisplayFor(model => model.OfferInfo.OfferID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfferInfo.DeadlineDate)
+        </dt>
+        <dd class="col-sm-4">
+            @if (Model.OfferInfo.DeadlineDate != null)
+            {
+                @Model.OfferInfo.DeadlineDate.ToShortDateString();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfferInfo.ClientName)
+        </dt>
+        <dd class="col-sm-4">
+            @Html.DisplayFor(model => model.OfferInfo.ClientName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfferInfo.DeliveryDate)
+        </dt>
+        <dd class="col-sm-4">
+            @if (Model.OfferInfo.DeliveryDate != null && Model.OfferInfo.DeliveryDate >= Model.OfferInfo.OrderDate)
+            {
+                @Model.OfferInfo.DeliveryDate.ToShortDateString();
+            }
+            else
+            {
+                @:not delivered yet
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfferInfo.OrderDate)
+        </dt>
+        <dd class="col-sm-4">
+            @if (Model.OfferInfo.OrderDate != null)
+            {
+                @Model.OfferInfo.OrderDate.ToShortDateString();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfferInfo.AddressName)
+        </dt>
+        <dd class="col-sm-4">
+            @Html.DisplayFor(model => model.OfferInfo.AddressName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfferInfo.ProductDiscount)
+        </dt>
+        <dd class="col-sm-4" id="productdiscount">
+            @Html.DisplayFor(model => model.OfferInfo.ProductDiscount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfferInfo.CityName)
+        </dt>
+        <dd class="col-sm-4">
+            @Html.DisplayFor(model => model.OfferInfo.CityName)
+        </dd>
+        <dt class="col-sm-2">
+        </dt>
+        <dd class="col-sm-4">
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfferInfo.CountryName)
+        </dt>
+        <dd class="col-sm-4">
+            @Html.DisplayFor(model => model.OfferInfo.CountryName)
+        </dd>
+    </dl>
+
+    @if (Model.CanEdit)
+    {
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.OfferInfo.OfferID">Edit offer header</a>
+        </div>
+    }
+
+    <p>
+
+    </p>
+    @if (Model.ProductsInOffer == null)
+    {
+        await Html.RenderPartialAsync("_ProductsTablePartial", (new List<StoreSystem.Web.Models.ProductViewModels.ProductLineInfoViewModel>(), Model.CanEdit, Model.OfferInfo.ProductDiscount));
+    }
+    else
+    {
+        await Html.RenderPartialAsync("_ProductsTablePartial", (Model.ProductsInOffer, Model.CanEdit, Model.OfferInfo.ProductDiscount));
+    }
+
+
+
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<div id="dialog" title="Result">
+    <p id="dialogtext">...</p>
+</div>
+@section Scripts {
+    <script>
+        var tablename;
+        $(document).ready(function () {
+            tablename = 'Offer';
+        });
+    </script>
+    <script src="~/js/ProductsTableScripts.js"></script>
+}

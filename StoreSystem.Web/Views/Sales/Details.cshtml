@@ -1,0 +1,131 @@
+﻿@model StoreSystem.Web.Models.SaleViewModels.SaleIDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Sale</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SaleInfo.SaleID)
+        </dt>
+        <dd class="col-sm-4" id="idfield">
+            @Html.DisplayFor(model => model.SaleInfo.SaleID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SaleInfo.DeadlineDate)
+        </dt>
+        <dd class="col-sm-4">
+            @if (Model.SaleInfo.DeadlineDate != null)
+            {
+                @Model.SaleInfo.DeadlineDate.ToShortDateString();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SaleInfo.ClientName)
+        </dt>
+        <dd class="col-sm-4">
+            @Html.DisplayFor(model => model.SaleInfo.ClientName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SaleInfo.DeliveryDate)
+        </dt>
+        <dd class="col-sm-4">
+            @if (Model.SaleInfo.DeliveryDate != null && Model.SaleInfo.DeliveryDate >= Model.SaleInfo.OrderDate)
+            {
+                @Model.SaleInfo.DeliveryDate.ToShortDateString();
+            }
+            else
+            {
+                @:not delivered yet
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SaleInfo.OrderDate)
+        </dt>
+        <dd class="col-sm-4">
+            @if (Model.SaleInfo.OrderDate != null)
+            {
+                @Model.SaleInfo.OrderDate.ToShortDateString();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SaleInfo.AddressName)
+        </dt>
+        <dd class="col-sm-4">
+            @Html.DisplayFor(model => model.SaleInfo.AddressName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SaleInfo.OfferID)
+        </dt>
+        <dd class="col-sm-4">
+            @if (Model.SaleInfo.OfferID != null)
+            {
+                @Html.DisplayFor(model => model.SaleInfo.OfferID)
+            }
+            else
+            {
+                @:not from offer
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SaleInfo.CityName)
+        </dt>
+        <dd class="col-sm-4">
+            @Html.DisplayFor(model => model.SaleInfo.CityName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SaleInfo.ProductDiscount)
+        </dt>
+        <dd class="col-sm-4" id="productdiscount">
+            @Html.DisplayFor(model => model.SaleInfo.ProductDiscount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SaleInfo.CountryName)
+        </dt>
+        <dd class="col-sm-4">
+            @Html.DisplayFor(model => model.SaleInfo.CountryName)
+        </dd>
+    </dl>
+
+    @if (Model.CanEdit)
+    {
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.SaleInfo.SaleID">Edit sale header</a>
+        </div>
+    }
+
+    <p>
+
+    </p>
+    @if (Model.ProductsInSale == null)
+    {
+        await Html.RenderPartialAsync("_ProductsTablePartial", (new List<StoreSystem.Web.Models.ProductViewModels.ProductLineInfoViewModel>(), Model.CanEdit, Model.SaleInfo.ProductDiscount));
+    }
+    else
+    {
+        await Html.RenderPartialAsync("_ProductsTablePartial", (Model.ProductsInSale, Model.CanEdit, Model.SaleInfo.ProductDiscount));
+    }
+
+
+    <a asp-action="Invoice" asp-controller="Sales" asp-route-id="@Model.SaleInfo.SaleID"><button class="stakbutton stakfsize15">Show invoice</button></a>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<div id="dialog" title="Result">
+    <p id="dialogtext">...</p>
+</div>
+@section Scripts {
+    <script>
+        var tablename;
+        $(document).ready(function () {
+            tablename = 'Sale';
+        });
+    </script>
+    <script src="~/js/ProductsTableScripts.js"></script>
+}

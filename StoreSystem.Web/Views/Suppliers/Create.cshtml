@@ -1,0 +1,65 @@
+﻿@*@model StoreSystem.Data.Models.Supplier*@
+@model SupplierViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create a supplier</h1>
+
+<hr />
+
+@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UIN" class="control-label"></label>
+                    <input asp-for="UIN" class="form-control" />
+                    <span asp-validation-for="UIN" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressID" class="control-label"></label>
+                    @*<input asp-for="AddressID" class="form-control" />*@
+                    <select asp-for="AddressID" class="form-control" asp-items="ViewBag.AddressID"></select>
+                    <span asp-validation-for="AddressID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CityID" class="control-label"></label>
+                    @*<input asp-for="CityID" class="form-control" />*@
+                    <select asp-for="CityID" class="form-control" asp-items="ViewBag.CityID"></select>
+                    <span asp-validation-for="CityID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CountryID" class="control-label"></label>
+                    @*<input asp-for="CountryID" class="form-control" />*@
+                    <select asp-for="CountryID" class="form-control" asp-items="ViewBag.CountryID"></select>
+                    <span asp-validation-for="CountryID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MicrosoftUserID" class="control-label"></label>
+                    @*<input asp-for="UserNomer" class="form-control" />*@
+                    <select asp-for="MicrosoftUserID" class="form-control" asp-items="ViewBag.MUserID"></select>
+                    <span asp-validation-for="MicrosoftUserID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

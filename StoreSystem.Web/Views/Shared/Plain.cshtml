@@ -1,0 +1,21 @@
+﻿@model string;
+@{
+    ViewData["Title"] = "View";
+    Layout = "_PlainLayout";
+}
+
+<div id="maincontent">
+    
+</div>
+
+<script>
+
+    function unescapeHtml(safe) {
+        return $('<div />').html(safe).text();
+    }
+    var content = '@Model';
+    var esccontent = unescapeHtml(content);
+
+    .$('#maincontent').text(esccontent);
+
+</script>>

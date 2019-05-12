@@ -1,0 +1,61 @@
+﻿@model IEnumerable<StoreSystem.Data.Models.Address>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Addresses list</h1>
+
+@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+
+    @*<form asp-controller="Addresses" asp-action="Index">
+            <p>
+                <div>
+                    <input type="submit" class="btn btn-outline-info" value="Auto populate from JSON" />
+                </div>
+            </p>
+        </form>*@
+
+    <form asp-controller="Addresses" asp-action="Index">
+        <p>
+            Address name: <input type="text" class="form-control" name="searchString">
+            <div>
+                <input type="submit" class="btn btn-outline-info" value="Search" />
+                <a asp-action="Index"><input type="button" class="btn btn-outline-info" value="Reset" /></a>
+            </div>
+        </p>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.AddressID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.AddressID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.AddressID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<div>
+    <a asp-area="Admin" asp-controller="StoreConfigurations" asp-action="Index">Back to StoreConfigurations</a>
+</div>

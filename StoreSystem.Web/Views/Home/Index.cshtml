@@ -1,0 +1,133 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@*@using Microsoft.AspNetCore.Identity
+    @using StoreSystem.Web.Models*@
+
+@inject SignInManager<StoreUser> SignInManager
+@inject UserManager<StoreUser> UserManager
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p class="text-info">Store System Web Application</p>
+</div>
+
+<div class="card inline" style="width:180px">
+    <img class="card-img-top" src="~/images/Users.svg" alt="Card image">
+    <div class="card-body">
+        <h4 class="card-title text-center">Users</h4>
+        <p class="card-text text-center">Users administration</p>
+
+        @*<a href="/users" class="block btn btn-outline-info">Go</a>*@
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <a class="block btn btn-outline-info" asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Go</a>
+        }
+        else
+        {
+            <a class="block btn btn-outline-info" asp-area="" asp-controller="Account" asp-action="Login">Go</a>
+        }
+    </div>
+</div>
+
+<div class="card inline" style="width:180px">
+    <img class="card-img-top" src="~/images/products.svg" alt="Card image">
+    <div class="card-body">
+        <h4 class="card-title text-center">Products</h4>
+        <p class="card-text text-center">Products administration</p>
+        <a href="/products" class="block btn btn-outline-info">Go</a>
+    </div>
+</div>
+
+@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff))
+{
+    <div class="card inline" style="width:180px">
+        <img class="card-img-top" src="~/images/clients.svg" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title text-center">Clients</h4>
+            <p class="card-text text-center">Clients administration</p>
+            <a href="clients" class="block btn btn-outline-info">Go</a>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff))
+{
+    <div class="card inline" style="width:180px">
+        <img class="card-img-top" src="~/images/Suppliers.svg" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title text-center">Suppliers</h4>
+            <p class="card-text text-center">Suppliers administration</p>
+            <a href="/suppliers" class="block btn btn-outline-info">Go</a>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff) || User.IsInRole(ROLES.Client) || User.IsInRole(ROLES.Supplier))
+{
+    <div class="card inline" style="width:180px">
+        <img class="card-img-top" src="~/images/Warehouses.svg" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title text-center">Warehouses</h4>
+            <p class="card-text text-center">Warehouses administration</p>
+            <a href="/warehouses" class="block btn btn-outline-info">Go</a>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff) || User.IsInRole(ROLES.Supplier))
+{
+    <div class="card inline" style="width:180px">
+        <img class="card-img-top" src="~/images/Purchases.svg" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title text-center">Purchases</h4>
+            <p class="card-text text-center">Purchases administration</p>
+            <a href="/purchases" class="block btn btn-outline-info">Go</a>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff) || User.IsInRole(ROLES.Client))
+{
+    <div class="card inline" style="width:180px">
+        <img class="card-img-top" src="~/images/Sales.svg" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title text-center">Sales</h4>
+            <p class="card-text text-center">Sales administration</p>
+            <a href="/sales" class="block btn btn-outline-info">Go</a>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff) || User.IsInRole(ROLES.Client))
+{
+    <div class="card inline" style="width:180px">
+        <img class="card-img-top" src="~/images/Offers.svg" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title text-center">Offers</h4>
+            <p class="card-text text-center">Offers administration</p>
+            <a href="/offers" class="block btn btn-outline-info">Go</a>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff))
+{
+    <div class="card inline" style="width:180px">
+        <img class="card-img-top" src="~/images/network_service.svg" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title text-center">Settings</h4>
+            <p class="card-text text-center">SS administration</p>
+
+            @*<a href="/users" class="block btn btn-outline-info">Go</a>*@
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <a class="block btn btn-outline-info" asp-area="admin" asp-controller="StoreConfigurations" asp-action="Index" title="Configure Store">Go</a>
+            }
+            else
+            {
+                <a class="block btn btn-outline-info" asp-area="" asp-controller="Account" asp-action="Login">Go</a>
+            }
+        </div>
+    </div>
+}

@@ -1,0 +1,256 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+input.anim {
+    width: 165px;
+    box-sizing: border-box;
+    border: 2px solid #39639e;
+    border-radius: 6px;
+    font-size: 10px;
+    background-color: white;
+    background-image: url('/images/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.margl5{
+    margin-right:5px;
+    margin-top:5px;
+    margin-bottom:8px;
+}
+
+.box {
+    border: 3px solid #39639e;
+    border-radius: 6px;
+    padding: 20px 20px 20px 20px;
+    background-color: #f9fdff;
+}
+
+input.anim:focus {
+    width: 100%;
+}
+
+.full-width {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+thead {
+    background-color: #39639e;
+    color: white;
+}
+
+a.block {
+    display: block;
+}
+
+
+div.inline {
+    display: inline-block;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.inline {
+    display:inline;
+}
+
+/* Stakata button
+-------------------------------------------------- */
+
+.stakbutton {
+    display: inline-block;
+    border-radius: 6px;
+    background-color: white;
+    border: 2px solid;
+    border-color: #39639e;
+    color: #39639e;
+    text-align: center;
+    font-size: 13px;
+    padding: 6px 15px;
+    /*width: 100px;*/
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.stakbutton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.stakbutton span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+    .stakbutton:disabled span:after {
+        content: '';
+    }
+    .stakbutton:disabled {
+        border-color: gray;
+        color:darkgrey;
+    }
+
+.stakbutton:hover span {
+    padding-right: 25px;
+}
+
+
+    .stakbutton:hover:disabled span {
+        padding-right: 0px;
+    }
+
+
+.stakbutton:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.stakfsize14 {
+    font-size: 14px;
+}
+
+.stakfsize15 {
+    font-size: 15px;
+}
+
+/* Stakata menu
+-------------------------------------------------- */
+
+.stakmenu {
+    display: inline-block;
+    border-radius: 6px;
+    background-color: white;
+    border: none;
+    color: #39639e;
+    text-align: center;
+    font-size: 16px;
+    padding: 6px 20px;
+    width: 180px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+}
+
+    .stakmenu span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+        .stakmenu span:after {
+            content: '•';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: 0;
+            transition: 0.5s;
+        }
+
+    .stakmenu:hover span {
+        padding-right: 25px;
+    }
+
+        .stakmenu:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+/*-------------------*/
+.btn-outline-info {
+    border-color: #39639e;
+    color: #39639e;
+    background-color: white;
+}
+
+.btn-outline-info:hover {
+    background-color: #39639e;
+}
+
+.btn-outline-danger {
+    border-color: #39639e;
+    color: red;
+    background-color: white;
+}
+
+    .btn-outline-danger:hover {
+        border-color: darkred;
+        background-color: #ffa3a3;
+    }
+
+.colorb {
+    color: #39639e;
+}
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+}

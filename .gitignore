@@ -328,3 +328,10 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+#Meld copied original files
+*.orig
+/WIMSystem/Models/DictionaryContainer.cs
+
+#Exclude PDFSharp lib file
+!PDFsharp-master\src\PdfSharp\bin\Debug\*.dll

@@ -1,0 +1,102 @@
+[
+  {
+    "SupplierID": 1,
+    "Name": "Supplier10",
+    "UIN": "173793629",
+    "Email": "Supplier10@gmail.com",
+    "Phone": "0888043400",
+    "AddressID": 7,
+    "CityID": 1,
+    "CountryID": 4
+  },
+  {
+    "SupplierID": 2,
+    "Name": "Supplier9",
+    "UIN": "026360104",
+    "Email": "Supplier9@gmail.com",
+    "Phone": "0888729971",
+    "AddressID": 9,
+    "CityID": 3,
+    "CountryID": 3
+  },
+  {
+    "SupplierID": 3,
+    "Name": "Supplier8",
+    "UIN": "824827343",
+    "Email": "Supplier8@gmail.com",
+    "Phone": "0888391818",
+    "AddressID": 16,
+    "CityID": 4,
+    "CountryID": 3
+  },
+  {
+    "SupplierID": 4,
+    "Name": "Supplier7",
+    "UIN": "248252878",
+    "Email": "Supplier7@gmail.com",
+    "Phone": "0888549763",
+    "AddressID": 16,
+    "CityID": 7,
+    "CountryID": 1
+  },
+  {
+    "SupplierID": 5,
+    "Name": "Supplier6",
+    "UIN": "369124299",
+    "Email": "Supplier6@gmail.com",
+    "Phone": "0888560977",
+    "AddressID": 19,
+    "CityID": 3,
+    "CountryID": 4
+  },
+  {
+    "SupplierID": 6,
+    "Name": "Supplier5",
+    "UIN": "318981844",
+    "Email": "Supplier5@gmail.com",
+    "Phone": "0888890610",
+    "AddressID": 6,
+    "CityID": 8,
+    "CountryID": 3
+  },
+  {
+    "SupplierID": 7,
+    "Name": "Supplier4",
+    "UIN": "372435476",
+    "Email": "Supplier4@gmail.com",
+    "Phone": "0888583526",
+    "AddressID": 11,
+    "CityID": 3,
+    "CountryID": 2
+  },
+  {
+    "SupplierID": 8,
+    "Name": "Supplier3",
+    "UIN": "432093283",
+    "Email": "Supplier3@gmail.com",
+    "Phone": "0888832915",
+    "AddressID": 9,
+    "CityID": 4,
+    "CountryID": 1
+  },
+  {
+    "SupplierID": 9,
+    "Name": "Supplier2",
+    "UIN": "323515769",
+    "Email": "Supplier2@gmail.com",
+    "Phone": "0888415279",
+    "AddressID": 14,
+    "CityID": 3,
+    "CountryID": 4
+  },
+  {
+    "SupplierID": 10,
+    "Name": "Supplier1",
+    "UIN": "760768358",
+    "Email": "Supplier1@gmail.com",
+    "Phone": "0888196740",
+    "AddressID": 17,
+    "CityID": 4,
+    "CountryID": 2
+  }
+]

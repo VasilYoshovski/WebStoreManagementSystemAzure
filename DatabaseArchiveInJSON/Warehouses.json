@@ -1,0 +1,23 @@
+[
+  {
+    "WarehouseID": 1,
+    "Name": "Warehouse3",
+    "AddressID": 3,
+    "CityID": 3,
+    "CountryID": 3
+  },
+  {
+    "WarehouseID": 2,
+    "Name": "Warehouse2",
+    "AddressID": 2,
+    "CityID": 2,
+    "CountryID": 2
+  },
+  {
+    "WarehouseID": 3,
+    "Name": "Warehouse1",
+    "AddressID": 1,
+    "CityID": 1,
+    "CountryID": 1
+  }
+]

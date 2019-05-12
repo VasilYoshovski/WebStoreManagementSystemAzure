@@ -1,0 +1,52 @@
+﻿@model StoreSystem.Data.Models.Purchase
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Purchase's details</h1>
+
+@if (User.IsInRole(ROLES.Admin) || User.IsInRole(ROLES.OfficeStaff))
+{
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PurchaseDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PurchaseDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeadlineDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeadlineDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeliveryDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeliveryDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Supplier)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Supplier.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Warehouse)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Warehouse.Name)
+            </dd>
+        </dl>
+    </div>
+    <div class="form-group">
+        <a asp-action="Edit" asp-route-id="@Model.PurchaseID" class="btn btn-primary">Edit</a>
+    </div>
+}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,83 @@
+﻿@model StoreSystem.Web.Models.OfferViewModels.OfferIndexViewModel
+
+@{
+    ViewData["Title"] = "Offers";
+}
+
+<h1>Store System offers list</h1>
+<div class="box">
+    @if (Model.CanEdit)
+    {
+        <p align="right">
+            <a asp-action="Create"><button class="stakbutton stakfsize15"><span>Create new</span></button></a>
+        </p>
+    }
+
+    <table class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th class="center">
+                    Num
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OffersList.FirstOrDefault().OfferID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OffersList.FirstOrDefault().CreatedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OffersList.FirstOrDefault().ClientName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OffersList.FirstOrDefault().Discount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OffersList.FirstOrDefault().Total)
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int count = 0; }
+
+            @foreach (var item in Model.OffersList)
+            {
+                count = count + 1;
+
+                <tr>
+                    <td class="center">
+                        @count
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OfferID)
+                    </td>
+                    <td>
+                        @if (item.CreatedOn != null)
+                        {
+                            @item.CreatedOn.ToShortDateString();
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Discount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+                    <td align="right">
+                        <a asp-action="Details" asp-route-id="@item.OfferID"><button class="stakbutton"><span>Details</span></button></a>
+                        @if (Model.CanEdit)
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.OfferID"><button class="stakbutton"><span>Edit</span></button></a>
+                            <a asp-action="CreateSale" asp-route-id="@item.OfferID"><button class="stakbutton"><span>Create sale</span></button></a>
+                            <a asp-action="Delete" asp-route-id="@item.OfferID"><button class="stakbutton"><span>Delete</span></button></a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>        
