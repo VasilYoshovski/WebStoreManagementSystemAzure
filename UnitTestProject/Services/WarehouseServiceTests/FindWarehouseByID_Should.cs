@@ -1,14 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StoreSystem.Data.DbContext;
 using StoreSystem.Data.Models;
 using StoreSystem.Services;
-using StoreSystem.Services.Providers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace StoreSystem.Tests.Services.WarehouseServiceTests
 {
@@ -18,7 +12,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [TestMethod]
         [DataRow(1000)]
         [DataRow(20000)]
-        public async void FindWarehouseWhenValidWarehouseIdIsPassed(int validWarehouseID)
+        public async Task FindWarehouseWhenValidWarehouseIdIsPassed(int validWarehouseID)
         {
             //Arrange
             var FindWarehouseWhenValidWarehouseIdIsPassed = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -29,8 +23,16 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
 
             using (var arrangeContext = new StoreSystemDbContext(options))
             {
-                arrangeContext.Warehouses.Add(new Warehouse() { WarehouseID = validWarehouseID });
-                arrangeContext.SaveChanges();
+                var tmpWarehouse = new Warehouse()
+                {
+                    Name = "WH123456",
+                    WarehouseID = validWarehouseID,
+                    AddressID = 1,
+                    CityID = 1,
+                    CountryID = 1
+                };
+                arrangeContext.Warehouses.Add(tmpWarehouse);
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -53,7 +55,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [DataRow(3)]
         [DataRow(32)]
         [DataRow(356)]
-        public void ReturnNullWhenInvalidWarehouseIdIsPassed(int validWarehouseID)
+        public async Task ReturnNullWhenInvalidWarehouseIdIsPassed(int validWarehouseID)
         {
             //Arrange
             var ReturnNullWhenInvalidWarehouseIdIsPassed = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -67,7 +69,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act
-                var actualWarehouse = sut.FindWarehouseByIDAsync(validWarehouseID);
+                var actualWarehouse = await sut.FindWarehouseByIDAsync(validWarehouseID);
 
                 //Assert
                 Assert.AreEqual(null, actualWarehouse);

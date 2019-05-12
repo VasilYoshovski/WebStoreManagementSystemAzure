@@ -53,13 +53,13 @@
     </div>
     @if (Model.IsProtected == false)
     {
-        <div class="card inline" style="width:180px">
+        <div class="card inline" style="width:240px; height:54px">
             <a class="block btn btn-outline-info" asp-area="Admin" asp-controller="StoreUsers" asp-action="ChangeUserRoleToVisitor" asp-route-id="@Model.UserName" title="Users list">Set to Visitor</a>
         </div>
-        <div class="card inline" style="width:180px">
+        <div class="card inline" style="width:240px; height:54px">
             <a class="block btn btn-outline-info" asp-area="Admin" asp-controller="StoreUsers" asp-action="ChangeUserRoleToOfficeStaff" asp-route-id="@Model.UserName" title="Users list">Set to OfficeStaff</a>
         </div>
-        <div class="card inline" style="width:180px">
+        <div class="card inline" style="width:240px; height:54px">
             <a class="block btn btn-outline-info" asp-area="Admin" asp-controller="StoreUsers" asp-action="ChangeUserRoleToAdmin" asp-route-id="@Model.UserName" title="Users list">Set to Admin</a>
         </div>
 

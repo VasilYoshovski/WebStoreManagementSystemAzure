@@ -2,22 +2,23 @@
 using StoreSystem.Data.DbContext;
 using StoreSystem.Data.Models;
 using StoreSystem.Services;
+using System;
 using System.Threading.Tasks;
 
 namespace StoreSystem.Tests.Services.WarehouseServiceTests
 {
     [TestClass]
-    public class FindWarehouseByName_Should
+    public class GetWarehouseByID_Should
     {
         [TestMethod]
-        [DataRow("Warehouse1")]
-        [DataRow("Warehouse2")]
-        public async Task FindWarehouseWhenValidWarehouseNamePassed(string validWarehouseName)
+        [DataRow(9991)]
+        [DataRow(9992)]
+        public async Task GetWarehouseWhenValidWarehouseIDPassed(int id)
         {
             //Arrange
-            var FindWarehouseWhenValidWarehouseNamePassed = System.Reflection.MethodBase.GetCurrentMethod().Name;
+            var GetWarehouseWhenValidWarehouseIDPassed = System.Reflection.MethodBase.GetCurrentMethod().Name;
 
-            var options = Utils.GetOptions(FindWarehouseWhenValidWarehouseNamePassed);
+            var options = Utils.GetOptions(GetWarehouseWhenValidWarehouseIDPassed);
 
             Utils.SeedDatabase(options);
 
@@ -25,8 +26,8 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
             {
                 var tmpWarehouse = new Warehouse()
                 {
-                    Name = validWarehouseName,
-                    WarehouseID = 1000,
+                    Name = "valid name" + id.ToString(),
+                    WarehouseID = id,
                     AddressID = 1,
                     CityID = 1,
                     CountryID = 1
@@ -40,40 +41,44 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act
-                var actualWarehouse = await sut.FindWarehouseByNameAsync(validWarehouseName);
+                var actualWarehouse = await sut.GetWarehouseByIDAsync(id);
 
                 //Assert
-                Assert.AreEqual(validWarehouseName, actualWarehouse.Name);
+                Assert.AreEqual(id, actualWarehouse.WarehouseID);
             }
         }
 
         [TestMethod]
-        [DataRow("Warehouse1")]
-        [DataRow("Warehouse2")]
-        public async Task ReturnNullWhenInvalidWarehouseNameIsPassed(string validWarehouseName)
+        [DataRow(-1)]
+        [DataRow(0)]
+        public async Task ReturnNullWhenInvalidWarehouseIDIsPassed(int id)
         {
             //Arrange
-            var ReturnNullWhenInvalidWarehouseNameIsPassed = System.Reflection.MethodBase.GetCurrentMethod().Name;
+            var ReturnNullWhenInvalidWarehouseIDIsPassed = System.Reflection.MethodBase.GetCurrentMethod().Name;
 
-            var options = Utils.GetOptions(ReturnNullWhenInvalidWarehouseNameIsPassed);
+            var options = Utils.GetOptions(ReturnNullWhenInvalidWarehouseIDIsPassed);
 
             Utils.SeedDatabase(options);
 
             using (var arrangeContext = new StoreSystemDbContext(options))
             {
-                arrangeContext.Warehouses.Add(new Warehouse() { Name = "fakeName" });
+                var tmpWarehouse = new Warehouse()
+                {
+                    Name = "valid name",
+                    WarehouseID = 1011,
+                    AddressID = 1,
+                    CityID = 1,
+                    CountryID = 1
+                };
+                arrangeContext.Warehouses.Add(tmpWarehouse);
                 await arrangeContext.SaveChangesAsync();
             }
 
+            //Act & Assert
             using (var context = new StoreSystemDbContext(options))
             {
                 var sut = new WarehouseService(context);
-
-                //Act
-                var actualWarehouse = await sut.FindWarehouseByNameAsync(validWarehouseName);
-
-                //Assert
-                Assert.AreEqual(null, actualWarehouse);
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.GetWarehouseByIDAsync(id));
             }
         }
     }

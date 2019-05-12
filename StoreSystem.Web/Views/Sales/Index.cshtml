@@ -15,7 +15,7 @@
     </div>
 }
 
-<div class="box">
+<div class="box forpdfsave">
     <table class="table table-hover table-sm">
         <thead>
             <tr>
@@ -98,3 +98,37 @@
         </tbody>
     </table>
 </div>
+        <button class="btn btn-info" onclick="savePdf();">Save to pdf</button>
+
+@section Scripts
+{
+<script>
+
+
+    function savePdf() {
+        var htmlContent = '';
+        $('.forpdfsave').each(function () {
+            htmlContent += this.outerHTML;
+        });
+
+        var modelg = {
+            Source: htmlContent
+        };
+        alert(modelg.Source);
+        $.ajax({
+            method: 'post',
+            url: "/PdfFromSource",
+            data: JSON.stringify(modelg),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                alert(htmlContent);
+                console.log(data);
+                //reloadDialog = data.isSucceded;
+                //$("#dialog").dialog("open");
+                //$("#dialogtext").text(data.text);
+            }
+        });
+    }
+    </script>
+}

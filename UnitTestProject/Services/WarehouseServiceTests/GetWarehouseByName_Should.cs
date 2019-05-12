@@ -3,6 +3,7 @@ using StoreSystem.Data.DbContext;
 using StoreSystem.Data.Models;
 using StoreSystem.Services;
 using System;
+using System.Threading.Tasks;
 
 namespace StoreSystem.Tests.Services.WarehouseServiceTests
 {
@@ -12,7 +13,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [TestMethod]
         [DataRow("Warehouse1")]
         [DataRow("Warehouse2")]
-        public async void GetWarehouseWhenValidWarehouseNamePassed(string validWarehouseName)
+        public async Task GetWarehouseWhenValidWarehouseNamePassed(string validWarehouseName)
         {
             //Arrange
             var GetWarehouseWhenValidWarehouseNamePassed = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -23,8 +24,16 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
 
             using (var arrangeContext = new StoreSystemDbContext(options))
             {
-                arrangeContext.Warehouses.Add(new Warehouse() { Name = validWarehouseName });
-                arrangeContext.SaveChanges();
+                var tmpWarehouse = new Warehouse()
+                {
+                    Name = validWarehouseName,
+                    WarehouseID = 1000,
+                    AddressID = 1,
+                    CityID = 1,
+                    CountryID = 1
+                };
+                arrangeContext.Warehouses.Add(tmpWarehouse);
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -40,9 +49,9 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         }
 
         [TestMethod]
-        [DataRow("Warehouse1")]
-        [DataRow("Warehouse2")]
-        public void ReturnNullWhenInvalidWarehouseNameIsPassed(string validWarehouseName)
+        [DataRow("Warehouse13")]
+        [DataRow("Warehouse23")]
+        public async Task ReturnNullWhenInvalidWarehouseNameIsPassed(string validWarehouseName)
         {
             //Arrange
             var ReturnNullWhenInvalidWarehouseNameIsPassed = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -53,15 +62,23 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
 
             using (var arrangeContext = new StoreSystemDbContext(options))
             {
-                arrangeContext.Warehouses.Add(new Warehouse() { Name = "fakeName" });
-                arrangeContext.SaveChanges();
+                var tmpWarehouse = new Warehouse()
+                {
+                    Name = "fakeName",
+                    WarehouseID = 1011,
+                    AddressID = 1,
+                    CityID = 1,
+                    CountryID = 1
+                };
+                arrangeContext.Warehouses.Add(tmpWarehouse);
+                await arrangeContext.SaveChangesAsync();
             }
 
             //Act & Assert
             using (var context = new StoreSystemDbContext(options))
             {
                 var sut = new WarehouseService(context);
-                Assert.ThrowsException<ArgumentException>(() => sut.GetWarehouseByNameAsync(validWarehouseName));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.GetWarehouseByNameAsync(validWarehouseName));
             }
         }
     }

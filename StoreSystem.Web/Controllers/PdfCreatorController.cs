@@ -1,11 +1,12 @@
 ﻿using DinkToPdf;
 using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using StoreSystem.Web.Controllers.Utils;
 using System.IO;
 
 namespace StoreSystem.Web.Controllers
 {
-    public class PdfCreatorController : ControllerBase
+    public class PdfCreatorController : Controller
     {
         private IConverter _converter;
 
@@ -45,5 +46,87 @@ namespace StoreSystem.Web.Controllers
 
             return Ok("Successfully created PDF document.");
         }
+        [Route("ToPlain")]
+        [HttpPost]
+        public IActionResult Plain([FromBody] HtmlSource htmlSource) //string htmlContent
+        {
+            // var myObject = JsonConvert.DeserializeObject<string>(htmlSource.Source);
+
+            return this.View("Plain.cshtml");
+        }
+
+        [Route("PdfFromURL")]
+        [HttpPost]
+        public void PdfUrl([FromBody] HtmlSource htmlSource) //string htmlContent
+        {
+            //var converter = new BasicConverter(new PdfTools());
+            CustomAssemblyLoadContext context = new CustomAssemblyLoadContext();
+            context.LoadUnmanagedLibrary(@"C:\Users\stani\Desktop\storemanagementsystemweb\StoreSystem.Web\libwkhtmltox.dll");
+
+            var converter = new SynchronizedConverter(new PdfTools());
+
+
+            var doc = new HtmlToPdfDocument()
+            {
+                GlobalSettings = {
+                        ColorMode = ColorMode.Color,
+                        Orientation = Orientation.Portrait,
+                        PaperSize = PaperKind.A4,
+                        Margins = new MarginSettings() { Top = 10 },
+                        Out = @"D:\test.pdf",
+                    },
+                Objects = {
+                    new ObjectSettings() {
+                        PagesCount = true,
+                        //HtmlContent = htmlSource.Source,
+                        Page = htmlSource.Source,
+                        WebSettings = { DefaultEncoding = "utf-8" },
+                        HeaderSettings = { FontSize = 9, Right = "Page [page] of [toPage]", Line = true, Spacing = 2.812 }
+                    }
+                }
+            };
+
+            converter.Convert(doc);
+        }
+
+        [Route("PdfFromSource")]
+        [HttpPost]
+        public IActionResult PdfSource([FromBody] HtmlSource htmlSource) //string htmlContent
+        {
+            //var converter = new BasicConverter(new PdfTools());
+            CustomAssemblyLoadContext context = new CustomAssemblyLoadContext();
+            context.LoadUnmanagedLibrary(@"C:\Users\stani\Desktop\storemanagementsystemweb\StoreSystem.Web\libwkhtmltox.dll");
+
+            var converter = new SynchronizedConverter(new PdfTools());
+
+
+            var doc = new HtmlToPdfDocument()
+            {
+                GlobalSettings = {
+                        ColorMode = ColorMode.Color,
+                        Orientation = Orientation.Portrait,
+                        PaperSize = PaperKind.A4,
+                        Margins = new MarginSettings() { Top = 10 },
+                        Out = @"D:\test.pdf",
+                    },
+                Objects = {
+                    new ObjectSettings() {
+                        PagesCount = true,
+                        HtmlContent = htmlSource.Source,
+                        WebSettings = { DefaultEncoding = "utf-8" },
+                        HeaderSettings = { FontSize = 9, Right = "Page [page] of [toPage]", Line = true, Spacing = 2.812 }
+                    }
+                }
+            };
+
+
+            converter.Convert(doc);
+            return this.View("../Sales/Details",2);
+        }
+    }
+
+    public class HtmlSource
+    {
+        public string Source { get; set; }
     }
 }

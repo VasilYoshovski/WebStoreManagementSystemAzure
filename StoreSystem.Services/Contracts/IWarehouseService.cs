@@ -6,7 +6,7 @@ namespace StoreSystem.Services
 {
     public interface IWarehouseService
     {
-        Task<bool> AddPurchaseToWarehouse(int warehouseID, int purchaseID);
+        Task<bool> AddPurchaseToWarehouseAsync(int warehouseID, int purchaseID);
         Task<Warehouse> CreateWarehouseAsync(string warehouseName, int countryID, int cityID, int addressID, bool save = true);
         Task<Warehouse> UpdateWarehouseAsync(int id, string warehouseName, int countryID, int cityID, int addressID, bool save = true);
         Task<bool> DeleteWarehouseAsync(int id);

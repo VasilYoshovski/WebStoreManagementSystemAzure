@@ -11,6 +11,17 @@
     <p>
         <a asp-action="Create">Create New</a>
     </p>
+
+    <form asp-controller="Purchases" asp-action="Index">
+        <p>
+            Supplier name: <input type="text" class="form-control" name="searchString">
+            <div>
+                <input type="submit" class="btn btn-outline-info" value="Search" />
+                <a asp-action="Index"><input type="button" class="btn btn-outline-info" value="Reset" /></a>
+            </div>
+        </p>
+    </form>
+
     <table class="table">
         <thead>
             <tr>

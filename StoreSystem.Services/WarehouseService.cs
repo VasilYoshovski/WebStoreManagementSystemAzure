@@ -42,7 +42,7 @@ namespace StoreSystem.Services
 
         public async Task<Warehouse> GetWarehouseByNameAsync(string warehouseName)
         {
-            return await FindWarehouseByNameAsync(warehouseName) ?? throw new ArgumentException($"Can not find warehouse with name {warehouseName}");
+            return (await FindWarehouseByNameAsync(warehouseName)) ?? throw new ArgumentException($"Can not find warehouse with name {warehouseName}");
         }
 
         public async Task<Warehouse> CreateWarehouseAsync(
@@ -54,7 +54,7 @@ namespace StoreSystem.Services
         {
             if (string.IsNullOrEmpty(warehouseName))
             {
-                throw new ArgumentNullException($"WarehouseName could not be null or empty!");
+                throw new ArgumentException($"WarehouseName could not be null or empty!");
             }
 
             if (string.IsNullOrWhiteSpace(warehouseName))
@@ -103,12 +103,27 @@ namespace StoreSystem.Services
         {
             if (string.IsNullOrEmpty(warehouseName))
             {
-                throw new ArgumentNullException($"WarehouseName could not be null or empty!");
+                throw new ArgumentException($"WarehouseName could not be null or empty!");
             }
 
             if (string.IsNullOrWhiteSpace(warehouseName))
             {
                 throw new ArgumentException($"WarehouseName could not be WhiteSpace!");
+            }
+
+            if (this.context.Cities.Find(cityID) == null)
+            {
+                throw new ArgumentException($"City with ID {cityID} does not exist!");
+            }
+
+            if (this.context.Countries.Find(countryID) == null)
+            {
+                throw new ArgumentException($"Country with ID {cityID} does not exist!");
+            }
+
+            if (this.context.Addresses.Find(addressID) == null)
+            {
+                throw new ArgumentException($"Address with ID {cityID} does not exist!");
             }
 
             var warehouse = await FindWarehouseByIDAsync(id);
@@ -150,7 +165,7 @@ namespace StoreSystem.Services
             return true;
         }
 
-        public async Task<bool> AddPurchaseToWarehouse(int warehouseID, int purchaseID)
+        public async Task<bool> AddPurchaseToWarehouseAsync(int warehouseID, int purchaseID)
         {
             var warehouse = await this.context.Warehouses
                 .Include(p => p.Purchases)

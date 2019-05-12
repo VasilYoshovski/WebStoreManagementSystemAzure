@@ -27,8 +27,9 @@ namespace StoreSystem.Web.Controllers
             this.warehouseService = warehouseService;
         }
 
-        // GET: Purchases
-        [Authorize(Roles = ROLES.AdminOrOfficeStaffOrClientOrSupplier)]
+        // GET: Purchases\
+        [HttpGet]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaffOrSupplier)]
         public async Task<IActionResult> Index()
         {
             this.ViewData["Title"] = "List of purchases";
@@ -36,8 +37,23 @@ namespace StoreSystem.Web.Controllers
             return View(purchases);
         }
 
+        // Post: Purchases
+        [HttpPost]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaffOrSupplier)]
+        public async Task<IActionResult> Index(string searchString)
+        {
+            if (string.IsNullOrEmpty(searchString))
+            {
+                searchString = "";
+            }
+            searchString = searchString.Trim().ToLower();
+            var purchases = await purchaseService.GetAllPurchasesAsync();
+            var sss = purchases.Where(p => p.Supplier.Name.ToLower().Contains(searchString));
+            return View(sss);
+        }
+
         // GET: Purchases/Details/5
-        [Authorize(Roles = ROLES.AdminOrOfficeStaffOrClientOrSupplier)]
+        [Authorize(Roles = ROLES.AdminOrOfficeStaffOrSupplier)]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

@@ -4,6 +4,7 @@ using StoreSystem.Data.Models;
 using StoreSystem.Services;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace StoreSystem.Tests.Services.WarehouseServiceTests
 {
@@ -13,7 +14,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [TestMethod]
         [DataRow(10, 7)]
         [DataRow(61, 298)]
-        public void AddPurchaseWhenPurchaseIDAndWarehouseIDExist(int validWarehouseID, int validPurchaseID)
+        public async Task AddPurchaseWhenPurchaseIDAndWarehouseIDExist(int validWarehouseID, int validPurchaseID)
         {
             //Arrange
             var AddPurchaseWhenPurchaseIDAndWarehouseIDExist = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -26,7 +27,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
             {
                 arrangeContext.Warehouses.Add(new Warehouse() { WarehouseID = validWarehouseID });
                 arrangeContext.Purchases.Add(new Purchase() { PurchaseID = validPurchaseID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -34,7 +35,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act
-                var isAdded = sut.AddPurchaseToWarehouse(validWarehouseID, validPurchaseID);
+                var isAdded = await sut.AddPurchaseToWarehouseAsync(validWarehouseID, validPurchaseID);
                 var addedPurchase = context.Warehouses.Find(validWarehouseID).Purchases
                     .Where(x => x.PurchaseID == validPurchaseID)
                     .FirstOrDefault();
@@ -50,10 +51,10 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [DataRow(134, 0)]
         [DataRow(10, 7)]
         [DataRow(61, 298)]
-        public void ThrowsArgumentExceptionWhenPurchaseIDDoesNotExist(int validWarehouseID, int validPurchaseID)
+        public async Task ThrowsArgumentExceptionWhenPurchaseIDDoesNotExist(int validWarehouseID, int validPurchaseID)
         {
-               //Arrange
-               var ThrowsArgumentExceptionWhenPurchaseIDDoesNotExist = System.Reflection.MethodBase.GetCurrentMethod().Name;
+            //Arrange
+            var ThrowsArgumentExceptionWhenPurchaseIDDoesNotExist = System.Reflection.MethodBase.GetCurrentMethod().Name;
 
             var options = Utils.GetOptions(ThrowsArgumentExceptionWhenPurchaseIDDoesNotExist);
 
@@ -62,7 +63,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
             using (var arrangeContext = new StoreSystemDbContext(options))
             {
                 arrangeContext.Warehouses.Add(new Warehouse() { WarehouseID = validWarehouseID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -70,7 +71,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentException>(() => sut.AddPurchaseToWarehouse(validWarehouseID, validPurchaseID));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.AddPurchaseToWarehouseAsync(validWarehouseID, validPurchaseID));
             }
         }
 
@@ -79,7 +80,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [DataRow(0, 7)]
         [DataRow(10, 7)]
         [DataRow(61, 298)]
-        public void ThrowsArgumentExceptionWhenWarehouseIDDoesNotExist(int validWarehouseID, int validPurchaseID)
+        public async Task ThrowsArgumentExceptionWhenWarehouseIDDoesNotExist(int validWarehouseID, int validPurchaseID)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenWarehouseIDDoesNotExist = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -91,7 +92,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
             using (var arrangeContext = new StoreSystemDbContext(options))
             {
                 arrangeContext.Purchases.Add(new Purchase() { PurchaseID = validPurchaseID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -99,7 +100,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentException>(() => sut.AddPurchaseToWarehouse(validWarehouseID, validPurchaseID));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.AddPurchaseToWarehouseAsync(validWarehouseID, validPurchaseID));
             }
         }
 
@@ -109,7 +110,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [DataRow(0, 7)]
         [DataRow(10, -47)]
         [DataRow(61, 0)]
-        public void ThrowsArgumentExceptionWhenNeitherPurchaseIDNorWarehouseIDExist(int validWarehouseID, int validPurchaseID)
+        public async Task ThrowsArgumentExceptionWhenNeitherPurchaseIDNorWarehouseIDExist(int validWarehouseID, int validPurchaseID)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenNeitherPurchaseIDNorWarehouseIDExist = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -123,7 +124,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentException>(() => sut.AddPurchaseToWarehouse(validWarehouseID, validPurchaseID));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.AddPurchaseToWarehouseAsync(validWarehouseID, validPurchaseID));
             }
         }
     }

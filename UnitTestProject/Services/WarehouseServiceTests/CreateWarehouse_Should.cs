@@ -3,8 +3,6 @@ using StoreSystem.Data.DbContext;
 using StoreSystem.Data.Models;
 using StoreSystem.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace StoreSystem.Tests.Services.WarehouseServiceTests
@@ -20,7 +18,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [DataRow("war", 52, 64, 13, true)]
         [DataRow("warehouse15", 52, 64, 13, true)]
         [DataRow("warehouse900", 65, 41, 39, false)]
-        public async void CreateWarehouseWhenValidDataIsProvided(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task CreateWarehouseWhenValidDataIsProvided(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var FindWarehouseWhenValidWarehouseIdIsPassed = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -34,7 +32,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 arrangeContext.Countries.Add(new Country() { CountryID = countryID });
                 arrangeContext.Cities.Add(new City() { CityID = cityID });
                 arrangeContext.Addresses.Add(new Address() { AddressID = addressID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -56,7 +54,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [TestMethod]
         [DataRow("warehouse1", 5, 4, 3, true)]
         [DataRow("warehouse1", 5, 4, 3, false)]
-        public async void CreateWarehouseAndIgnoreValueOfSaveParameter(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task CreateWarehouseAndIgnoreValueOfSaveParameter(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var CreateWarehouseAndIgnoreValueOfSaveParameter = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -70,7 +68,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 arrangeContext.Countries.Add(new Country() { CountryID = countryID });
                 arrangeContext.Cities.Add(new City() { CityID = cityID });
                 arrangeContext.Addresses.Add(new Address() { AddressID = addressID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -92,7 +90,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [TestMethod]
         [DataRow("warehouse81", 5, 4, 3, true)]
         [DataRow("warehouse81", 5, 4, 3, false)]
-        public void ThrowsArgumentExceptionWhenWarehouseNameAlreadyExists(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task ThrowsArgumentExceptionWhenWarehouseNameAlreadyExists(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenWarehouseNameExists = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -107,7 +105,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 arrangeContext.Countries.Add(new Country() { CountryID = countryID });
                 arrangeContext.Cities.Add(new City() { CityID = cityID });
                 arrangeContext.Addresses.Add(new Address() { AddressID = addressID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -115,14 +113,14 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentException>(() => sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
             }
         }
 
         [TestMethod]
         [DataRow("warehouse81", 5, 4, 3, true)]
         [DataRow("warehouse81", 5, 4, 3, false)]
-        public void ThrowsArgumentExceptionWhenCountryIDDoesNotExist(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task ThrowsArgumentExceptionWhenCountryIDDoesNotExist(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenCountryIDDoesNotExist = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -135,7 +133,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
             {
                 arrangeContext.Cities.Add(new City() { CityID = cityID });
                 arrangeContext.Addresses.Add(new Address() { AddressID = addressID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -143,14 +141,14 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentException>(() => sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
             }
         }
 
         [TestMethod]
         [DataRow("warehouse81", 5, 4, 3, true)]
         [DataRow("warehouse81", 5, 4, 3, false)]
-        public void ThrowsArgumentExceptionWhenCityIDDoesNotExist(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task ThrowsArgumentExceptionWhenCityIDDoesNotExist(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenCityIDDoesNotExist = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -163,7 +161,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
             {
                 arrangeContext.Countries.Add(new Country() { CountryID = countryID });
                 arrangeContext.Addresses.Add(new Address() { AddressID = addressID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -171,14 +169,14 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentException>(() => sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
             }
         }
 
         [TestMethod]
         [DataRow("warehouse81", 5, 4, 3, true)]
         [DataRow("warehouse81", 5, 4, 3, false)]
-        public void ThrowsArgumentExceptionWhenAddressIDDoesNotExist(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task ThrowsArgumentExceptionWhenAddressIDDoesNotExist(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenAddressIDDoesNotExist = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -191,7 +189,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
             {
                 arrangeContext.Countries.Add(new Country() { CountryID = countryID });
                 arrangeContext.Cities.Add(new City() { CityID = cityID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -199,7 +197,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentException>(() => sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
             }
         }
 
@@ -208,7 +206,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [DataRow(null, 5, 4, 3, false)]
         [DataRow("", 5, 4, 3, true)]
         [DataRow("", 5, 4, 3, false)]
-        public void ThrowsArgumentExceptionWhenWarehouseNameIsNullOrEmpty(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task ThrowsArgumentExceptionWhenWarehouseNameIsNullOrEmpty(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenWarehouseNameIsNullOrEmpty = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -223,7 +221,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 arrangeContext.Countries.Add(new Country() { CountryID = countryID });
                 arrangeContext.Cities.Add(new City() { CityID = cityID });
                 arrangeContext.Addresses.Add(new Address() { AddressID = addressID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -231,7 +229,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentNullException>(() => sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
             }
         }
 
@@ -240,7 +238,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [DataRow(null, 5, 4, 3, false)]
         [DataRow("", 5, 4, 3, true)]
         [DataRow("", 5, 4, 3, false)]
-        public void ThrowsArgumentExceptionWhenWarehouseNameIsNullOrEmptyAndCountryIDIsInvalid(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task ThrowsArgumentExceptionWhenWarehouseNameIsNullOrEmptyAndCountryIDIsInvalid(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenWarehouseNameIsNullOrEmptyAndCountryIDIsInvalid = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -255,7 +253,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 //arrangeContext.Countries.Add(new Country() { CountryID = countryID });
                 arrangeContext.Cities.Add(new City() { CityID = cityID });
                 arrangeContext.Addresses.Add(new Address() { AddressID = addressID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -263,7 +261,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentNullException>(() => sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
             }
         }
 
@@ -272,7 +270,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [DataRow(null, 5, 4, 3, false)]
         [DataRow("", 5, 4, 3, true)]
         [DataRow("", 5, 4, 3, false)]
-        public void ThrowsArgumentExceptionWhenWarehouseNameIsNullOrEmptyAndCityIDIsInvalid(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task ThrowsArgumentExceptionWhenWarehouseNameIsNullOrEmptyAndCityIDIsInvalid(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenWarehouseNameIsNullOrEmptyAndCityIDIsInvalid = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -287,7 +285,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 arrangeContext.Countries.Add(new Country() { CountryID = countryID });
                 //arrangeContext.Cities.Add(new City() { CityID = cityID });
                 arrangeContext.Addresses.Add(new Address() { AddressID = addressID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -295,7 +293,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentNullException>(() => sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
             }
         }
 
@@ -304,7 +302,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [DataRow(null, 5, 4, 3, false)]
         [DataRow("", 5, 4, 3, true)]
         [DataRow("", 5, 4, 3, false)]
-        public void ThrowsArgumentExceptionWhenWarehouseNameIsNullOrEmptyAndAddressIDIsInvalid(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task ThrowsArgumentExceptionWhenWarehouseNameIsNullOrEmptyAndAddressIDIsInvalid(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenWarehouseNameIsNullOrEmptyAndAddressIDIsInvalid = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -319,7 +317,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 arrangeContext.Countries.Add(new Country() { CountryID = countryID });
                 arrangeContext.Cities.Add(new City() { CityID = cityID });
                 //arrangeContext.Addresses.Add(new Address() { AddressID = addressID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -327,7 +325,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentNullException>(() => sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
             }
         }
 
@@ -337,7 +335,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [DataRow("   ", 5, 4, 3, false)]
         [DataRow("    ", 5, 4, 3, false)]
         [DataRow("                                     ", 5, 4, 3, false)]
-        public void ThrowsArgumentExceptionWhenWarehouseNameIsWhiteSpase(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task ThrowsArgumentExceptionWhenWarehouseNameIsWhiteSpase(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenWarehouseNameIsWhiteSpase = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -352,7 +350,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 arrangeContext.Countries.Add(new Country() { CountryID = countryID });
                 arrangeContext.Cities.Add(new City() { CityID = cityID });
                 arrangeContext.Addresses.Add(new Address() { AddressID = addressID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -360,7 +358,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentException>(() => sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
             }
         }
 
@@ -370,7 +368,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [DataRow("   ", 5, 4, 3, false)]
         [DataRow("    ", 5, 4, 3, false)]
         [DataRow("                                     ", 5, 4, 3, false)]
-        public void ThrowsArgumentExceptionWhenWarehouseNameIsWhiteSpaseAndCountryIDIsInvalid(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task ThrowsArgumentExceptionWhenWarehouseNameIsWhiteSpaseAndCountryIDIsInvalid(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenWarehouseNameIsWhiteSpaseAndCountryIDIsInvalid = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -385,7 +383,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 //arrangeContext.Countries.Add(new Country() { CountryID = countryID });
                 arrangeContext.Cities.Add(new City() { CityID = cityID });
                 arrangeContext.Addresses.Add(new Address() { AddressID = addressID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -393,7 +391,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentException>(() => sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
             }
         }
 
@@ -403,7 +401,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [DataRow("   ", 5, 4, 3, false)]
         [DataRow("    ", 5, 4, 3, false)]
         [DataRow("                                     ", 5, 4, 3, false)]
-        public void ThrowsArgumentExceptionWhenWarehouseNameIsWhiteSpaseAndCityIDIsInvalid(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task ThrowsArgumentExceptionWhenWarehouseNameIsWhiteSpaseAndCityIDIsInvalid(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenWarehouseNameIsWhiteSpaseAndCityIDIsInvalid = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -418,7 +416,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 arrangeContext.Countries.Add(new Country() { CountryID = countryID });
                 //arrangeContext.Cities.Add(new City() { CityID = cityID });
                 arrangeContext.Addresses.Add(new Address() { AddressID = addressID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -426,7 +424,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentException>(() => sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
             }
         }
 
@@ -436,7 +434,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
         [DataRow("   ", 5, 4, 3, false)]
         [DataRow("    ", 5, 4, 3, false)]
         [DataRow("                                     ", 5, 4, 3, false)]
-        public void ThrowsArgumentExceptionWhenWarehouseNameIsWhiteSpaseAndAddressIDIsInvalid(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
+        public async Task ThrowsArgumentExceptionWhenWarehouseNameIsWhiteSpaseAndAddressIDIsInvalid(string warehouseName, int cityID, int countryID, int addressID, bool toSave)
         {
             //Arrange
             var ThrowsArgumentExceptionWhenWarehouseNameIsWhiteSpaseAndAddressIDIsInvalid = System.Reflection.MethodBase.GetCurrentMethod().Name;
@@ -451,7 +449,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 arrangeContext.Countries.Add(new Country() { CountryID = countryID });
                 arrangeContext.Cities.Add(new City() { CityID = cityID });
                 //arrangeContext.Addresses.Add(new Address() { AddressID = addressID });
-                arrangeContext.SaveChanges();
+                await arrangeContext.SaveChangesAsync();
             }
 
             using (var context = new StoreSystemDbContext(options))
@@ -459,7 +457,7 @@ namespace StoreSystem.Tests.Services.WarehouseServiceTests
                 var sut = new WarehouseService(context);
 
                 //Act & Assert
-                Assert.ThrowsException<ArgumentException>(() => sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
+                await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await sut.CreateWarehouseAsync(warehouseName, countryID, cityID, addressID, toSave));
             }
         }
     }

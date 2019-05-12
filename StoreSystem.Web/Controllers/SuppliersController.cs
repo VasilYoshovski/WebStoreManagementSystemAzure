@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using StoreSystem.Data;
-using StoreSystem.Data.DbContext;
 using StoreSystem.Data.Models;
 using StoreSystem.Services;
 using StoreSystem.Web.Models.SupplierViewModels;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace StoreSystem.Web.Controllers
 {
