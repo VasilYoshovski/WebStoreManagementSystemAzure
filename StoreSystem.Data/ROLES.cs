@@ -28,5 +28,14 @@ namespace StoreSystem.Data
                 Visitor
             };
         }
-    }
+        public static string[] AllRoles =>
+          new string[] {
+                Admin,
+                Client,
+                OfficeStaff,
+                SiteObserver,
+                Supplier,
+                Visitor
+    };
+}
 }

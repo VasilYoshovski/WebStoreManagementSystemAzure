@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using StoreSystem.Data;
+using StoreSystem.Web.Utils;
 
 namespace StoreSystem.Web.Controllers
 {
@@ -66,6 +67,7 @@ namespace StoreSystem.Web.Controllers
             return canEdit;
         }
 
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> CreateSale(int? id)
         {
             if (id == null)
@@ -87,6 +89,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Offers
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin, ROLES.Client)]
         public async Task<IActionResult> Index()
         {
             int? clientId = null;
@@ -102,7 +105,7 @@ namespace StoreSystem.Web.Controllers
             return this.View(new OfferIndexViewModel() { OffersList = offers, CanEdit = this.CanEdit() });
         }
 
-        // GET: Offers/Details/5
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin, ROLES.Client)]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -130,6 +133,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Offers/Create
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Create()
         {
             this.ViewData["Clients"] = new SelectList(await this.clientService.GetAllClientsAsync(), "ClientID", "Name");
@@ -144,6 +148,7 @@ namespace StoreSystem.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Create(OfferCUViewModel offer)
         {
             if (this.ModelState.IsValid)
@@ -161,6 +166,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Offers/Edit/5
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -187,6 +193,7 @@ namespace StoreSystem.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Edit(int id, OfferCUViewModel offer)
         {
             if (id != offer.OfferID)
@@ -218,6 +225,7 @@ namespace StoreSystem.Web.Controllers
             return this.View(offer);
         }
 
+        [AuthorizeRolesAttribute(ROLES.Admin)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -236,6 +244,7 @@ namespace StoreSystem.Web.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [AuthorizeRolesAttribute(ROLES.Admin)]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try

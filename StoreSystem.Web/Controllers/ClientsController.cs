@@ -7,6 +7,7 @@ using StoreSystem.Data.Models;
 using StoreSystem.Services;
 using StoreSystem.Web.Mappers;
 using StoreSystem.Web.Models.ClientViewModels;
+using StoreSystem.Web.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +48,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Clients
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Index()
         {
             var clientsList = await this.clientService.GetAllClientsWithAddressAsync();
@@ -60,6 +62,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Clients/Details/5
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -82,6 +85,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Clients/Create
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Create()
         {
             this.ViewData["Addresses"] = new SelectList(await this.addressService.GetAllAddressesAsync(), "AddressID", "Name");
@@ -96,6 +100,7 @@ namespace StoreSystem.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Create(ClientCUViewModel client)
         {
             if (this.ModelState.IsValid)
@@ -110,6 +115,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Clients/Edit/5
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -134,6 +140,7 @@ namespace StoreSystem.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Edit(int id, ClientCUViewModel client)
         {
             if (id != client.ClientID)
@@ -161,6 +168,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Clients/Delete/5
+        [AuthorizeRolesAttribute(ROLES.Admin)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -181,6 +189,7 @@ namespace StoreSystem.Web.Controllers
         // POST: Clients/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [AuthorizeRolesAttribute(ROLES.Admin)]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var userId = await this.clientService.DeleteClient(id);

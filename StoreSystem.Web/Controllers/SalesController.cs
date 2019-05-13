@@ -11,6 +11,7 @@ using StoreSystem.Web.Mappers;
 using StoreSystem.Web.Models.ClientViewModels;
 using StoreSystem.Web.Models.ProductViewModels;
 using StoreSystem.Web.Models.SaleViewModels;
+using StoreSystem.Web.Utils;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -70,6 +71,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Sales
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin, ROLES.Client)]
         public async Task<IActionResult> Index()
         {
             int? clientId = null;
@@ -87,6 +89,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Sales/Details/5
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin,ROLES.Client)]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -113,7 +116,7 @@ namespace StoreSystem.Web.Controllers
             return this.View(detailViewModel);
         }
 
-
+        //[AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin, ROLES.Client)]
         public async Task<IActionResult> Invoice(int? id)
         {
             if (id == null)
@@ -142,6 +145,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Sales/Create
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Create()
         {
             this.ViewData["Addresses"] = new SelectList(await this.addressService.GetAllAddressesAsync(), "AddressID", "Name");
@@ -173,6 +177,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Sales/Edit/5
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -199,6 +204,7 @@ namespace StoreSystem.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Edit(int id, SaleCUViewModel sale)
         {
             if (id != sale.SaleID)
@@ -231,6 +237,7 @@ namespace StoreSystem.Web.Controllers
             return this.View(sale);
         }
 
+        [AuthorizeRolesAttribute(ROLES.Admin)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -249,6 +256,7 @@ namespace StoreSystem.Web.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [AuthorizeRolesAttribute(ROLES.Admin)]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try

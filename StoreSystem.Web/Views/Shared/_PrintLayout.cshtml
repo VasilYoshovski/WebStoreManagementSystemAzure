@@ -50,16 +50,18 @@
 
     <div class="d-print-none" id="headerbuttons">
         <br />
-        <button class="btn btn-info full-width" onclick="printNow();">Print</button>
+        <button class="btn btn-info full-width d-print-none" onclick="printNow();">Print</button>
         <br />
         <button class="btn btn-info full-width" onclick="savePdf();">Save to pdf</button>
         <br />
         <button class="btn btn-info full-width" onclick="goBack();">Back to sale</button>
     </div>
-
+    <div id="dialog" title="Result">
+        <p id="dialogtext">.</p>
+    </div>
     <footer class="border-top footer text-muted d-print-none">
         <div class="container">
-            &copy; 2019 - TelerikAcademy - <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            &copy; 2019 - Store management Center - <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
         </div>
     </footer>
 
@@ -94,30 +96,33 @@
         }
 
         function savePdf() {
-            var htmlContent = '';
-            $('.forpdfsave').each(function () {
-                htmlContent += this.outerHTML;
-            });
+            var htmlContent = window.location.href;
+
 
             var modelg = {
                 Source: htmlContent
             };
-            alert(modelg.Source);
+            alert("Succefully saved pdf file!");
             $.ajax({
                 method: 'post',
-                url: "/ToPlain",
+                url: "/PdfFromURL",
                 data: JSON.stringify(modelg),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-                    alert(htmlContent);
-                    console.log(data);
-                    //reloadDialog = data.isSucceded;
-                    //$("#dialog").dialog("open");
-                    //$("#dialogtext").text(data.text);
+                    $("#dialog").dialog("open");
+                    $("#dialogtext").text(data.text);
                 }
             });
         }
+        $(function () {
+            $("#dialog").dialog(
+                { autoOpen: false },
+                { modal: true },
+                { show: { effect: "scale", duration: 300 } }
+
+            )
+        });
     </script>
 
 

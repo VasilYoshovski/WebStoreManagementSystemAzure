@@ -101,7 +101,7 @@ namespace StoreSystem.Tests.Controllers.OfferControllerTests
         public async Task ReturnProper_WhenInvalidOfferIdIsPassed()
         {
             int notFoundOfferId = 1;
-
+            InitMocks();
             var sut = CreateController();
 
             //Act

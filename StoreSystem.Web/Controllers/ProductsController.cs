@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StoreSystem.Data;
@@ -78,9 +79,6 @@ namespace StoreSystem.Web.Controllers
 
             var productViewModelList = products.Select(this.productMapper.MapFrom);
             var result = PaginatedList<ProductViewModel>.Create(productViewModelList, productsCount, pageIndex, pageSize, CanEdit());
-            //return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pageNumber ?? 1, pageSize));
-
-            //var items = await source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
 
             return this.View(result);
         }
@@ -91,6 +89,7 @@ namespace StoreSystem.Web.Controllers
             return this.Json(await this.productService.GetAllProductsIdName(0, 10,term));
         }
 
+        [Authorize]
         public async Task<IActionResult> ProductData(int id)
         {
             var product = await this.productService.FindProductByIdAsync(id);
@@ -118,6 +117,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Products/Create
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public IActionResult Create()
         {
             return this.View();
@@ -128,6 +128,7 @@ namespace StoreSystem.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Create(ProductViewModel productViewModel)
         {
             if (this.ModelState.IsValid)
@@ -145,6 +146,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Products/Edit/5
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -165,6 +167,7 @@ namespace StoreSystem.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<IActionResult> Edit(int id, ProductViewModel productViewModel)
         {
             if (id != productViewModel.ProductID)
@@ -201,6 +204,7 @@ namespace StoreSystem.Web.Controllers
         }
 
         // GET: Products/Delete/5
+        [AuthorizeRolesAttribute(ROLES.Admin)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -220,6 +224,7 @@ namespace StoreSystem.Web.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [AuthorizeRolesAttribute(ROLES.Admin)]
         public IActionResult DeleteConfirmed(int id)
         {
             productService.DeleteProduct(id);

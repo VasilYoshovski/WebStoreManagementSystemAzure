@@ -56,17 +56,15 @@ input.anim {
 }
 
 .margl5{
-    margin-right:5px;
+    margin:5px,5px,8px,0px;
+    /*margin-right:5px;
     margin-top:5px;
     margin-bottom:8px;
-    margin-left:0
+    margin-left:0*/
 }
 
 .margl0 {
-    margin-right: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
+    margin: 0px;
 }
 
 .rem1{

@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using StoreSystem.Data;
 using StoreSystem.Services;
-using StoreSystem.Services.Dto;
 using StoreSystem.Web.Models.Dtos;
+using StoreSystem.Web.Utils;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace StoreSystem.Web.Controllers
 {
+    [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
     public class ProductSaleController : Controller
     {
         private readonly ISaleService saleService;

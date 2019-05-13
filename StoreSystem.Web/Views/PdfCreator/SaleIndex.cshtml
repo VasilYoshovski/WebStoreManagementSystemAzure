@@ -1,0 +1,60 @@
+﻿@model StoreSystem.Web.Models.SaleViewModels.SaleIndexViewModel
+
+
+<table class="table table-hover table-sm">
+    <thead>
+        <tr>
+            <th class="center">
+                Num
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesList.FirstOrDefault().SaleID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesList.FirstOrDefault().CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesList.FirstOrDefault().ClientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesList.FirstOrDefault().Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesList.FirstOrDefault().Total)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int count = 0; }
+
+        @foreach (var item in Model.SalesList)
+        {
+            count = count + 1;
+
+            <tr>
+
+                <td class="center">
+                    @count
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SaleID)
+                </td>
+                <td>
+                    @if (item.CreatedOn != null)
+                    {
+                        @item.CreatedOn.ToShortDateString();
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

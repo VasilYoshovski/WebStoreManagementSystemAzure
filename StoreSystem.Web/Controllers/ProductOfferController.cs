@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using StoreSystem.Data;
 using StoreSystem.Services;
 using StoreSystem.Services.Dto;
 using StoreSystem.Web.Models.Dtos;
+using StoreSystem.Web.Utils;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,13 +14,14 @@ namespace StoreSystem.Web.Controllers
     public class ProductOfferController : Controller
     {
         private readonly IOfferService offerService;
-
+        
         public ProductOfferController(IOfferService offerService)
         {
             this.offerService = offerService ?? throw new ArgumentNullException(nameof(offerService));
         }
 
         [HttpPost]
+        [AuthorizeRolesAttribute(ROLES.OfficeStaff, ROLES.Admin)]
         public async Task<ActionResult> AddProductsToOffer([FromBody] ProductsLinesDto model)
         {
             try
@@ -35,7 +39,7 @@ namespace StoreSystem.Web.Controllers
                     return this.Json(new ResultAjax() { IsSucceded = false, Text = ret });
                 };
             }
-            catch (ExecutionEngineException ex)
+            catch (Exception ex)
             {
                 var ret = $"Failed to add products to offer. " + ex.Message;
                 return this.Json(new ResultAjax() { IsSucceded = false, Text = ret });

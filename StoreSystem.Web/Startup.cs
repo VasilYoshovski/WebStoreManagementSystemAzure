@@ -104,28 +104,32 @@ namespace StoreSystem.Web
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "savepdf",
+                    template: "savepdf",
+                    defaults: new { controller = "PdfCreatorController", action = "CreatePDF" });
+
+                routes.MapRoute(
+                    name: "create_address",
+                    template: "createAddress/{newAddress}",
+                    defaults: new { controller = "Addresses", action = "Create" });
+
+                routes.MapRoute(
+                    name: "create_city",
+                    template: "createCity/{newAddress}",
+                    defaults: new { controller = "Cities", action = "Create" });
+
+                routes.MapRoute(
+                    name: "create_country",
+                    template: "createCountry/{newAddress}",
+                    defaults: new { controller = "Countries", action = "Create" });
+
+                routes.MapRoute(
                     name: "Admin",
                     template: "{area:exists}/{controller=StoreConfigurations}/{action=Index}/{id?}");
 
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute(
-                    name: "savepdf",
-                    template: "savepdf",
-                    defaults: new { controller = "PdfCreatorController", action = "CreatePDF" });
-                routes.MapRoute(
-                    name: "create_address",
-                    template: "createAddress/{newAddress}",
-                    defaults: new { controller = "Addresses", action = "Create" });
-                routes.MapRoute(
-                    name: "create_city",
-                    template: "createCity/{newAddress}",
-                    defaults: new { controller = "Cities", action = "Create" });
-                routes.MapRoute(
-                    name: "create_country",
-                    template: "createCountry/{newAddress}",
-                    defaults: new { controller = "Countries", action = "Create" });
             });
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using StoreSystem.Data;
 
 namespace StoreSystem.Web.Utils
 {
@@ -9,4 +10,5 @@ namespace StoreSystem.Web.Utils
             Roles = string.Join(",", roles);
         }
     }
+    
 }

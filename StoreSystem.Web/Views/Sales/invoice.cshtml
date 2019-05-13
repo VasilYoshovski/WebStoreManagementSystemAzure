@@ -43,16 +43,16 @@
             </dt>
 
 
-            <dt class="col-sm-2">
+            <dt class="col-2">
                 @Html.DisplayNameFor(model => model.ClientInfo.Name)
             </dt>
-            <dd class="col-sm-4">
+            <dd class="col-4">
                 @Html.DisplayFor(model => model.ClientInfo.Name)
             </dd>
-            <dt class="col-sm-2">
+            <dt class="col-2">
                 @Html.DisplayNameFor(model => model.SaleInfo.OrderDate.Date)
             </dt>
-            <dd class="col-sm-4">
+            <dd class="col-4">
                 @if (Model.SaleInfo.OrderDate != null)
                 {
                     @Model.SaleInfo.OrderDate.ToShortDateString();

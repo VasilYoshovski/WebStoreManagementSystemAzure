@@ -98,12 +98,11 @@
         </tbody>
     </table>
 </div>
-        <button class="btn btn-info" onclick="savePdf();">Save to pdf</button>
+        <button class="btn btn-info margl5" onclick="savePdf();">Save to pdf</button>
 
 @section Scripts
 {
 <script>
-
 
     function savePdf() {
         var htmlContent = '';
@@ -114,15 +113,14 @@
         var modelg = {
             Source: htmlContent
         };
-        alert(modelg.Source);
+        alert("Successfully saved table to pdf");
         $.ajax({
-            method: 'post',
+            method: 'get',
             url: "/PdfFromSource",
             data: JSON.stringify(modelg),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                alert(htmlContent);
                 console.log(data);
                 //reloadDialog = data.isSucceded;
                 //$("#dialog").dialog("open");
@@ -130,5 +128,6 @@
             }
         });
     }
+
     </script>
 }
